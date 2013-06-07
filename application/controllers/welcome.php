@@ -17,10 +17,20 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+
 	public function index()
 	{
+                $this->check();
 		$this->load->view('welcome_message');
 	}
+
+        public function check()
+        {
+                $this->load->model('check_model');
+                $this->check_model->check_booking_date();
+                $this->check_model->update_fine();
+        }
+
 }
 
 /* End of file welcome.php */

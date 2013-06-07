@@ -1,1 +1,3 @@
-trigger on fine and book taken
+member approve trigger on status
+
+member highest koita boi book korte parbe???

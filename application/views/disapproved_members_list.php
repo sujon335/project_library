@@ -78,7 +78,7 @@ $this->load->view('includes/nav_helper', $data) ?>
         <?php } else { ?>
                 <br/>  <br/>
                     <div class="alert alert-error">
-                            <p>No Book found</p>
+                            <p>No membership request found</p>
                                 </div>
                     <?php  } ?>
 

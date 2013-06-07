@@ -38,7 +38,7 @@
 
                   <li><a href="<?php echo site_url('book_list_member/show_books'); ?>">All Books</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="false">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" data-close-others="false">
                               <?php  echo $name; ?> <b></b>
                             </a>
                             <ul class="dropdown-menu">
@@ -55,7 +55,7 @@
                       ?>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="false">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" data-close-others="false">
                         Manage Books <b ></b>
                     </a>
                     <ul class="dropdown-menu">
@@ -68,7 +68,7 @@
                 </li>
                         
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="false">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" data-close-others="false">
                         Manage Members<b></b>
                     </a>
                     <ul class="dropdown-menu">
@@ -81,7 +81,7 @@
                 </li>
 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="false">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" data-close-others="false">
                             Settings<b></b>
                         </a>
                         <ul class="dropdown-menu">

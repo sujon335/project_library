@@ -30,10 +30,10 @@ class Approve_member extends CI_Controller {
   STATUS = 1
  WHERE MEMBER_ID='$member_id'";
 
-        $q="INSERT INTO FINES (ID,MEMBER_ID,FINE)
-               VALUES (SEQ_USER.nextval,'$member_id',0)";
-
-        $insert=$this->db->query($q);
+//        $q="INSERT INTO FINES (ID,MEMBER_ID,FINE)
+//               VALUES (SEQ_USER.nextval,'$member_id',0)";
+//
+//        $insert=$this->db->query($q);
         $update=$this->db->query($query);
 
         redirect('approve_member/disapproved_members');

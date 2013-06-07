@@ -34,10 +34,7 @@ class Book_model extends CI_Model {
 
         $insert=$this->db->query($query);
 
-               $q="INSERT INTO BOOK (BOOK_ID,TITLE,EDITION,AUTHOR,CATEGORY,EXTENSION_NO,KEYWORD,PUBLISHER,SUPPLIER)
-               VALUES (SEQ_USER.nextval,'$TITLE','$EDITION','$AUTHOR','$CATEGORY','$EXTENSION_NO','$KEYWORD','$PUBLISHER','$SUPPLIER')";
 
-        $insert1=$this->db->query($q);
 
         return $insert;
     }
