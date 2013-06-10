@@ -10,6 +10,45 @@ $this->load->view('includes/nav_helper', $data) ?>
 
     });
 </script>
+
+
+	<style type="text/css" media="screen">
+
+
+	td {
+	 border-right: 1px solid #aaaaaa;
+	 padding: 1em;
+	}
+
+	td:last-child {
+	 border-right: none;
+	}
+
+	th {
+	 text-align: left;
+	 padding-left: 1em;
+	 background: #cac9c9;
+	border-bottom: 1px solid white;
+	border-right: 1px solid #aaaaaa;
+	}
+
+	#pagination a, #pagination strong {
+	 background: #e3e3e3;
+	 padding: 4px 7px;
+	 text-decoration: none;
+	border: 1px solid #cac9c9;
+	color: #292929;
+	font-size: 13px;
+	}
+
+	#pagination strong, #pagination a:hover {
+	 font-weight: normal;
+	 background: #cac9c9;
+	}
+	</style>
+
+
+
 </head>
 <body>
 
@@ -28,9 +67,9 @@ $this->load->view('includes/nav_helper', $data) ?>
 
         <div class="span9">
 
-     
-       
-              <a href="<?php echo base_url(); ?>index.php/book_list_admin/add_book" class="btn btn-info">+Add New Book</a>    
+
+
+              <a href="<?php echo base_url(); ?>index.php/book_list_admin/add_book" class="btn btn-info">+Add New Book</a>
             <form class="navbar-search pull-right" method="post" action="<?php echo base_url(); ?>index.php/book_list_admin/book_search_get">
 
                              Search type
@@ -45,12 +84,12 @@ $this->load->view('includes/nav_helper', $data) ?>
 
                                 <input type="text" name="search" class="search-query" placeholder="Search">
                         <input type="submit" value="search" class="btn btn-success">
-                        
-                        </form>
-                      
-                   
 
-          
+                        </form>
+
+
+
+
 
 
                <?php if(isset($book_list) && $num>0 ) { ?>
@@ -58,11 +97,11 @@ $this->load->view('includes/nav_helper', $data) ?>
 
                 <table class="table table-bordered">
 
-                    <tr class="success">
+                    <tr >
                         <th colspan="10">All books list</th>
                     </tr>
 
-               <tr class="success">
+               <tr >
                     <th>Title</th>
                      <th>Author</th>
                      <th>Category</th>
@@ -74,11 +113,11 @@ $this->load->view('includes/nav_helper', $data) ?>
                      <th></th>
                      <th></th>
                 </tr>
-                
+
                  <?php  foreach($book_list as $row){?>
 
 
-                     <tr class="success">
+                     <tr >
 
                         <td> <?php echo $row->TITLE; ?> </td>
                         <td> <?php echo $row->AUTHOR; ?> </td>
@@ -92,11 +131,11 @@ $this->load->view('includes/nav_helper', $data) ?>
  </td>
                         <td>        <a href="<?php echo base_url(); ?>index.php/book_list_admin/book_delete/<?php echo $row->BOOK_ID; ?>" class="btn btn-danger">Delete</a>
  </td>
- 
+
 
                     </tr>
-                    
-                 
+
+
 
                             <?php }  ?>
 
@@ -109,13 +148,13 @@ $this->load->view('includes/nav_helper', $data) ?>
                                 </div>
                     <?php  } ?>
 
-                 
 
-                
+
+
 
     <?php echo $this->pagination->create_links();  ?>
-                    
-            
+
+
 
  </div>
           </div>
@@ -125,7 +164,9 @@ $this->load->view('includes/nav_helper', $data) ?>
      </div>
 
 
-
+<script type="text/javascript" charset="utf-8">
+	$('tr:odd').css('background', '#dff0d8');
+</script>
 
 
 <?php $this->load->view('includes/footer') ?>

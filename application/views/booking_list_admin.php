@@ -5,7 +5,7 @@
     function()
     {
 
-<?php $data['selected_nav'] = "approve_member_navbar";
+<?php $data['selected_nav'] = "booking_data_navbar";
 $this->load->view('includes/nav_helper', $data) ?>
 
     });
@@ -46,6 +46,10 @@ $this->load->view('includes/nav_helper', $data) ?>
 	}
 	</style>
 
+
+
+
+
 </head>
 <body>
 
@@ -66,44 +70,56 @@ $this->load->view('includes/nav_helper', $data) ?>
 
      
        
-         
+   
+            <form class="navbar-search pull-right" method="post" action="<?php echo base_url(); ?>index.php/booking_data_admin/data_search_get">
+
+    
+
+                                <input type="text" name="search" class="search-query" placeholder="Search">
+                        <input type="submit" value="search" class="btn btn-success">
+                        
+                        </form><br/><br/>
+                      
                    
 
           
 
 
-               <?php if(isset($member_list) && $num>0 ) { ?>
+               <?php if(isset($booking_list) && $num>0 ) { ?>
 
 
                 <table class="table table-bordered">
 
-                    <tr>
-                        <th colspan="10">membership requests</th>
+                    <tr class="success">
+                        <th colspan="5">list of bookings</th>
                     </tr>
 
-               <tr>
-                     <th>Library Card No. </th>
-                    <th>Name</th>
-                     <th>Email</th>
-                     <th>Contact</th>
-                     <th></th>
-                     <th></th>
+               <tr >
+                    <th>Book Title</th>
+                     <th>Extension No</th>
+                     <th>Member Name</th>
+                     <th>Library Card No</th>
+                     <th>Status</th>
+                    
                 </tr>
                 
-                 <?php  foreach($member_list as $row){?>
+                 <?php  foreach($booking_list as $row){?>
 
 
-                     <tr >
-                        <td> <?php echo $row->LIBRARY_CARD_NO; ?> </td>
+                     <tr>
+
+                        <td> <a href="<?php echo base_url(); ?>index.php/booking_data_admin/selected_book/<?php echo $row->BOOK_ID; ?>"><?php echo $row->TITLE; ?> </a></td>
+                        <td> <?php echo $row->EXTENSION_NO; ?> </td>
                         <td> <?php echo $row->NAME; ?> </td>
-                        <td> <?php echo $row->EMAIL; ?> </td>
-                        <td> <?php echo $row->CONTACT; ?> </td>
+                        <td> <?php echo $row->LIBRARY_CARD_NO; ?> </td>
 
-                        
-                        <td>        <a href="<?php echo base_url(); ?>index.php/approve_member/change_status/<?php echo $row->MEMBER_ID; ?>" class="btn btn-success">Approve</a> </td>
-                        <td>        <a href="<?php echo base_url(); ?>index.php/approve_member/cancel_request/<?php echo $row->MEMBER_ID; ?>" class="btn btn-danger">Disapprove</a> </td>
- 
 
+                        <?php if ($row->TAKEN==0) {  ?>
+                        <td>        <a href="<?php echo base_url(); ?>index.php/booking_data_admin/taken_book/<?php echo $row->BOOKING_ID; ?>" class="btn btn-info">Taken</a> </td>
+
+                            <?php } else { ?>
+                          <td>        <a href="<?php echo base_url(); ?>index.php/booking_data_admin/returned_book/<?php echo $row->BOOKING_ID; ?>" class="btn btn-success">Returned</a> </td>
+                        <?php  }?>
                     </tr>
                     
                  
@@ -115,7 +131,7 @@ $this->load->view('includes/nav_helper', $data) ?>
         <?php } else { ?>
                 <br/>  <br/>
                     <div class="alert alert-error">
-                            <p>No membership request found</p>
+                            <p>No booking list found</p>
                                 </div>
                     <?php  } ?>
 
@@ -135,14 +151,10 @@ $this->load->view('includes/nav_helper', $data) ?>
      </div>
 
 
-<br/>
-<br/>
-<br/>
 
 <script type="text/javascript" charset="utf-8">
 	$('tr:odd').css('background', '#dff0d8');
 </script>
-
 
 
 <?php $this->load->view('includes/footer') ?>

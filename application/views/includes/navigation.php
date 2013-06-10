@@ -38,7 +38,7 @@
 
                   <li><a href="<?php echo site_url('book_list_member/show_books'); ?>">All Books</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" data-close-others="false">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="70" data-close-others="false">
                               <?php  echo $name; ?> <b></b>
                             </a>
                             <ul class="dropdown-menu">
@@ -55,33 +55,33 @@
                       ?>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" data-close-others="false">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="70" data-close-others="false">
                         Manage Books <b ></b>
                     </a>
                     <ul class="dropdown-menu">
                         <li ><a tabindex="-1" href="<?php echo site_url('book_list_admin/show_books'); ?>">Book list</a></li>
                         <li class="divider"></li>
-                        <li><a tabindex="-1" href="#">Booking Data</a></li>
+                        <li><a tabindex="-1" href="<?php echo site_url('booking_data_admin/show_booking_data'); ?>">Booking Data</a></li>
                         <li class="divider"></li>
                         <li><a tabindex="-1" href="">Approve Booking Extend</a></li>
                     </ul>
                 </li>
                         
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" data-close-others="false">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="70" data-close-others="false">
                         Manage Members<b></b>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a tabindex="-1" href="#">Member list</a></li>
                         <li class="divider"></li>
-                        <li><a tabindex="-1" href="#">Member Fines</a></li>
+                        <li><a tabindex="-1" href="<?php echo site_url('member_fines/show_fines'); ?>">Member Fines</a></li>
                         <li class="divider"></li>
                         <li><a tabindex="-1" href="<?php echo site_url('approve_member/disapproved_members'); ?>">Approve Membership request</a></li>
                     </ul>
                 </li>
 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" data-close-others="false">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="70" data-close-others="false">
                             Settings<b></b>
                         </a>
                         <ul class="dropdown-menu">

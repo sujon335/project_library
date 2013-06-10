@@ -10,6 +10,43 @@ $this->load->view('includes/nav_helper', $data) ?>
 
     });
 </script>
+
+	<style type="text/css" media="screen">
+
+
+	td {
+	 border-right: 1px solid #aaaaaa;
+	 padding: 1em;
+	}
+
+	td:last-child {
+	 border-right: none;
+	}
+
+	th {
+	 text-align: left;
+	 padding-left: 1em;
+	 background: #cac9c9;
+	border-bottom: 1px solid white;
+	border-right: 1px solid #aaaaaa;
+	}
+
+	#pagination a, #pagination strong {
+	 background: #e3e3e3;
+	 padding: 4px 7px;
+	 text-decoration: none;
+	border: 1px solid #cac9c9;
+	color: #292929;
+	font-size: 13px;
+	}
+
+	#pagination strong, #pagination a:hover {
+	 font-weight: normal;
+	 background: #cac9c9;
+	}
+	</style>
+
+
 </head>
 <body>
 
@@ -58,11 +95,11 @@ $this->load->view('includes/nav_helper', $data) ?>
 
                 <table class="table table-bordered">
 
-                    <tr class="success">
+                    <tr >
                         <th colspan="10">All books list</th>
                     </tr>
 
-               <tr class="success">
+               <tr >
                     <th>Title</th>
                      <th>Author</th>
                      <th>Category</th>
@@ -98,7 +135,7 @@ $this->load->view('includes/nav_helper', $data) ?>
 
                 
 
-                     <tr class="success">
+                     <tr >
 
                         <td> <?php echo $row->TITLE; ?> </td>
                         <td> <?php echo $row->AUTHOR; ?> </td>
@@ -124,7 +161,7 @@ $this->load->view('includes/nav_helper', $data) ?>
 
 
 
-                     <tr class="success">
+                     <tr >
 
                         <td> <?php echo $row->TITLE; ?> </td>
                         <td> <?php echo $row->AUTHOR; ?> </td>
@@ -148,7 +185,7 @@ $this->load->view('includes/nav_helper', $data) ?>
 
 
 
-                     <tr class="success">
+                     <tr >
 
                         <td> <?php echo $row->TITLE; ?> </td>
                         <td> <?php echo $row->AUTHOR; ?> </td>
@@ -174,7 +211,7 @@ $this->load->view('includes/nav_helper', $data) ?>
 
 
 
-                     <tr class="success">
+                     <tr >
 
                         <td> <?php echo $row->TITLE; ?> </td>
                         <td> <?php echo $row->AUTHOR; ?> </td>
@@ -225,7 +262,9 @@ $this->load->view('includes/nav_helper', $data) ?>
      </div>
 
 
-
+<script type="text/javascript" charset="utf-8">
+	$('tr:odd').css('background', '#dff0d8');
+</script>
 
 
 <?php $this->load->view('includes/footer') ?>

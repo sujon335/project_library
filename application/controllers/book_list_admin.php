@@ -106,17 +106,17 @@ class Book_list_admin extends CI_Controller {
 
             $config['base_url']=''.base_url().'index.php/book_list_admin/show_books';
 
-            $this->db->order_by('TITLE');
+            $this->db->order_by('CATEGORY');
 
             $config['total_rows']=  $this->db->get('BOOK')->num_rows();
-            $config['per_page']=7;
+            $config['per_page']=6;
             $config['num_links']=20;
-
-
+            $config['full_tag_open']='<div id="pagination">';
+            $config['full_tag_close']='</div>';
 
             $this->pagination->initialize($config);
 
-            $this->db->order_by('TITLE');
+            $this->db->order_by('CATEGORY');
 
             $query= $this->db->get('BOOK',$config['per_page'],$this->uri->segment(3));
             $data['book_list']=$query->result();
@@ -165,7 +165,8 @@ class Book_list_admin extends CI_Controller {
             $config['total_rows']=  $this->db->get('BOOK')->num_rows();
             $config['per_page']=7;
             $config['num_links']=20;
-
+            $config['full_tag_open']='<div id="pagination">';
+            $config['full_tag_close']='</div>';
 
 
             $this->pagination->initialize($config);
@@ -196,7 +197,8 @@ class Book_list_admin extends CI_Controller {
             $config['total_rows']=  $this->db->get('BOOK')->num_rows();
             $config['per_page']=7;
             $config['num_links']=20;
-
+            $config['full_tag_open']='<div id="pagination">';
+            $config['full_tag_close']='</div>';
 
 
             $this->pagination->initialize($config);

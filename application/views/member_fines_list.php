@@ -5,12 +5,11 @@
     function()
     {
 
-<?php $data['selected_nav'] = "approve_member_navbar";
+<?php $data['selected_nav'] = "member_fines_navbar";
 $this->load->view('includes/nav_helper', $data) ?>
 
     });
 </script>
-
 	<style type="text/css" media="screen">
 
 
@@ -46,6 +45,7 @@ $this->load->view('includes/nav_helper', $data) ?>
 	}
 	</style>
 
+
 </head>
 <body>
 
@@ -66,7 +66,16 @@ $this->load->view('includes/nav_helper', $data) ?>
 
      
        
-         
+   
+            <form class="navbar-search pull-right" method="post" action="<?php echo base_url(); ?>index.php/member_fines/member_search_get">
+
+    
+
+                                <input type="text" name="search" class="search-query" placeholder="Search member">
+                        <input type="submit" value="search" class="btn btn-success">
+                        
+                        </form><br/><br/>
+                      
                    
 
           
@@ -77,16 +86,16 @@ $this->load->view('includes/nav_helper', $data) ?>
 
                 <table class="table table-bordered">
 
-                    <tr>
-                        <th colspan="10">membership requests</th>
+                    <tr class="success">
+                        <th colspan="6">Member's fines list</th>
                     </tr>
 
-               <tr>
-                     <th>Library Card No. </th>
-                    <th>Name</th>
+               <tr >
+                    <th>Member name</th>
+                     <th>username</th>
                      <th>Email</th>
-                     <th>Contact</th>
-                     <th></th>
+                     <th>Library Card No</th>
+                     <th>Fine</th>
                      <th></th>
                 </tr>
                 
@@ -94,15 +103,14 @@ $this->load->view('includes/nav_helper', $data) ?>
 
 
                      <tr >
-                        <td> <?php echo $row->LIBRARY_CARD_NO; ?> </td>
-                        <td> <?php echo $row->NAME; ?> </td>
-                        <td> <?php echo $row->EMAIL; ?> </td>
-                        <td> <?php echo $row->CONTACT; ?> </td>
 
-                        
-                        <td>        <a href="<?php echo base_url(); ?>index.php/approve_member/change_status/<?php echo $row->MEMBER_ID; ?>" class="btn btn-success">Approve</a> </td>
-                        <td>        <a href="<?php echo base_url(); ?>index.php/approve_member/cancel_request/<?php echo $row->MEMBER_ID; ?>" class="btn btn-danger">Disapprove</a> </td>
- 
+                        <td> <?php echo $row->NAME; ?> </td>
+                        <td> <?php echo $row->USERNAME; ?> </td>
+                        <td> <?php echo $row->EMAIL; ?> </td>
+                        <td> <?php echo $row->LIBRARY_CARD_NO; ?> </td>
+                        <td> <?php echo $row->FINE; ?> </td>
+                        <td>        <a href="<?php echo base_url(); ?>index.php/member_fines/clear_fine/<?php echo $row->MEMBER_ID; ?>" class="btn btn-success">clear</a> </td>
+
 
                     </tr>
                     
@@ -115,7 +123,7 @@ $this->load->view('includes/nav_helper', $data) ?>
         <?php } else { ?>
                 <br/>  <br/>
                     <div class="alert alert-error">
-                            <p>No membership request found</p>
+                            <p>No member's fine list found</p>
                                 </div>
                     <?php  } ?>
 
@@ -135,14 +143,10 @@ $this->load->view('includes/nav_helper', $data) ?>
      </div>
 
 
-<br/>
-<br/>
-<br/>
 
 <script type="text/javascript" charset="utf-8">
 	$('tr:odd').css('background', '#dff0d8');
 </script>
-
 
 
 <?php $this->load->view('includes/footer') ?>

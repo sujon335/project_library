@@ -64,7 +64,8 @@ class Approve_member extends CI_Controller {
             $config['total_rows']=  $this->db->get('MEMBER')->num_rows();
             $config['per_page']=7;
             $config['num_links']=20;
-
+            $config['full_tag_open']='<div id="pagination">';
+            $config['full_tag_close']='</div>';
 
 
             $this->pagination->initialize($config);

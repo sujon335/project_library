@@ -32,6 +32,7 @@ $this-> load->view('includes/nav_helper',$data)?>
             <div class="widget-body">
               <div class="center-align">
                 <form class="form-horizontal form-signin-signup" method="post" action="<?php echo base_url(); ?>index.php/register/registration">
+                  <input type="text" name="card" placeholder="Library Card no.">
                   <input type="text" name="name" placeholder="Name">
                   <input type="text" name="email" placeholder="Email">
                   <input type="text" name="contact" placeholder="Contact/phone no.">

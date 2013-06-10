@@ -25,12 +25,16 @@ class Register extends CI_Controller {
 
 
         $this->load->library('form_validation');
+
+ 
+
+        $this->form_validation->set_rules('card', '', 'required');
         $this->form_validation->set_rules('name', '', 'required');
          $this->form_validation->set_rules('email', '', 'trim|required|valid_email');
         $this->form_validation->set_rules('contact', '', 'required');
         $this->form_validation->set_rules('username', '', 'required');
-        $this->form_validation->set_rules('password', '', 'required');
-         $this->form_validation->set_rules('password_confirmation', '', 'required');
+        $this->form_validation->set_rules('password', '', 'required|matches[password_confirmation]');
+        $this->form_validation->set_rules('password_confirmation', '', 'required');
 
         if ($this->form_validation->run() == FALSE) {
 
@@ -48,11 +52,7 @@ class Register extends CI_Controller {
 
 
 
-                    $pass1=$this->input->post('password');
-                    $pass2=$this->input->post('password_confirmation');
 
-                    if($pass1==$pass2)
-                    {
 
 
 
@@ -62,20 +62,13 @@ class Register extends CI_Controller {
                                     $this->load->view('registration_view',$data);
                                 }
                             else {
-                                    $data['msg'] = "username already exists try another username";
+                                    $data['msg'] = "Provided data username or library card no. or email already exists";
                                     $this->load->view('registration_view',$data);
 
                             }
 
 
-                    }
-                     else {
 
-                        $data['msg']='password did not confirmed correctly';
-                        $this->load->view('registration_view',$data);
-                    }
-
-                //}
 
 
             }
