@@ -5,12 +5,11 @@
     function()
     {
 
-<?php $data['selected_nav'] = "booking_data_navbar";
+<?php $data['selected_nav'] = "member_list_navbar";
 $this->load->view('includes/nav_helper', $data) ?>
 
     });
 </script>
-
 	<style type="text/css" media="screen">
 
 
@@ -47,9 +46,6 @@ $this->load->view('includes/nav_helper', $data) ?>
 	</style>
 
 
-
-
-
 </head>
 <body>
 
@@ -68,62 +64,55 @@ $this->load->view('includes/nav_helper', $data) ?>
 
         <div class="span9">
 
-     
-       
-   
-            <form class="navbar-search pull-right" method="post" action="<?php echo base_url(); ?>index.php/booking_data_admin/data_search_get">
 
-    
 
-                                <input type="text" name="search" class="search-query" placeholder="Search">
+
+            <form class="navbar-search pull-right" method="post" action="<?php echo base_url(); ?>index.php/member_list/member_search_get">
+
+
+
+                                <input type="text" name="search" class="search-query" placeholder="Search member">
                         <input type="submit" value="search" class="btn btn-success">
-                        
+
                         </form><br/><br/>
-                      
-                   
-
-          
 
 
-               <?php if(isset($booking_list) && $num>0 ) { ?>
+
+
+
+
+               <?php if(isset($member_list) && $num>0 ) { ?>
 
 
                 <table class="table table-bordered">
 
                     <tr class="success">
-                        <th colspan="6">list of bookings</th>
+                        <th colspan="6">All Member list(total <?php echo $num; ?> members) </th>
                     </tr>
 
                <tr >
-                    <th>Book Title</th>
-                     <th>Extension No</th>
-                     <th>Member Name</th>
+                    <th>Member name</th>
+                     <th>username</th>
+                     <th>Email</th>
                      <th>Library Card No</th>
-                     <th>Finishing Date</th>
-                     <th>Status</th>
-                    
+                     <th></th>
                 </tr>
-                
-                 <?php  foreach($booking_list as $row){?>
+
+                 <?php  foreach($member_list as $row){?>
 
 
-                     <tr>
+                     <tr >
 
-                        <td> <a href='#' id='opener' name='".$row->BOOK_ID."'><?php echo $row->TITLE; ?> </a></td>
-                        <td> <?php echo $row->EXTENSION_NO; ?> </td>
                         <td> <?php echo $row->NAME; ?> </td>
+                        <td> <?php echo $row->USERNAME; ?> </td>
+                        <td> <?php echo $row->EMAIL; ?> </td>
                         <td> <?php echo $row->LIBRARY_CARD_NO; ?> </td>
-                        <td> <?php echo $row->FINISHING_DATE; ?> </td>
+                        <td>        <a href="<?php echo base_url(); ?>index.php/member_list/member_delete/<?php echo $row->MEMBER_ID; ?>" class="btn btn-danger">Delete</a> </td>
 
-                        <?php if ($row->TAKEN==0) {  ?>
-                        <td>        <a href="<?php echo base_url(); ?>index.php/booking_data_admin/taken_book/<?php echo $row->BOOKING_ID; ?>" class="btn btn-info">Taken</a> </td>
 
-                            <?php } else { ?>
-                          <td>        <a href="<?php echo base_url(); ?>index.php/booking_data_admin/returned_book/<?php echo $row->BOOKING_ID; ?>" class="btn btn-success">Returned</a> </td>
-                        <?php  }?>
                     </tr>
-                    
-                 
+
+
 
                             <?php }  ?>
 
@@ -132,17 +121,17 @@ $this->load->view('includes/nav_helper', $data) ?>
         <?php } else { ?>
                 <br/>  <br/>
                     <div class="alert alert-error">
-                            <p>No booking list found</p>
+                            <p>No member list found</p>
                                 </div>
                     <?php  } ?>
 
-                 
 
-                
+
+
 
     <?php echo $this->pagination->create_links();  ?>
-                    
-            
+
+
 
  </div>
           </div>
@@ -158,10 +147,4 @@ $this->load->view('includes/nav_helper', $data) ?>
 </script>
 
 
-
-
-
-
 <?php $this->load->view('includes/footer') ?>
-
- 

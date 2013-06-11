@@ -65,7 +65,11 @@ class Book_list_member extends CI_Controller {
             $q=$this->db->get('BOOKING_DATA');
             $data['record']=$q->result();
 
-
+            
+            $member_id=$this->book_model_member->get_member_id();
+            $this->db->where('MEMBER_ID',$member_id);
+            $qu=$this->db->get('BOOKING_DATA');
+            $data['issued_books']= $qu->result();
 
 
 

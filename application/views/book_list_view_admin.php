@@ -69,10 +69,10 @@ $this->load->view('includes/nav_helper', $data) ?>
 
 
 
-              <a href="<?php echo base_url(); ?>index.php/book_list_admin/add_book" class="btn btn-info">+Add New Book</a>
+              <a href="<?php echo base_url(); ?>index.php/book_list_admin/add_book" class="btn btn-info"><i class="icon-pencil"></i>Add New Book</a>
             <form class="navbar-search pull-right" method="post" action="<?php echo base_url(); ?>index.php/book_list_admin/book_search_get">
 
-                             Search type
+                       <i class="icon-search"></i> Search type
                   <select name="search_type" >
                     <option value="all">-----</option>
                     <option value="TITLE">By Title</option>
@@ -82,8 +82,8 @@ $this->load->view('includes/nav_helper', $data) ?>
                     <option value="PUBLISHER">By Publisher</option>
                 </select>
 
-                                <input type="text" name="search" class="search-query" placeholder="Search">
-                        <input type="submit" value="search" class="btn btn-success">
+                       <input type="text" name="search" class="search-query" placeholder="Search">
+           <input type="submit" value="search" class="btn btn-success">
 
                         </form>
 
@@ -98,7 +98,7 @@ $this->load->view('includes/nav_helper', $data) ?>
                 <table class="table table-bordered">
 
                     <tr >
-                        <th colspan="10">All books list</th>
+                        <th colspan="10">All books list(Total <?php echo $num; ?> Books)</th>
                     </tr>
 
                <tr >

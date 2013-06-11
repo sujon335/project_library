@@ -70,7 +70,7 @@ $this->load->view('includes/nav_helper', $data) ?>
 
             <form class="navbar-search pull-right" method="post" action="<?php echo base_url(); ?>index.php/book_list_member/book_search_get">
 
-                             Search type
+                       <i class="icon-search"></i> Search type
                   <select name="search_type" >
                     <option value="all">-----</option>
                     <option value="TITLE">By Title</option>
@@ -96,7 +96,7 @@ $this->load->view('includes/nav_helper', $data) ?>
                 <table class="table table-bordered">
 
                     <tr >
-                        <th colspan="10">All books list</th>
+                        <th colspan="10">All books list(Total <?php echo $num; ?> Books)</th>
                     </tr>
 
                <tr >
@@ -159,7 +159,37 @@ $this->load->view('includes/nav_helper', $data) ?>
        <?php  if($a==2 && $fine==0) { ?>
 
 
+                          <?php $b=0; if(isset ($issued_books)) foreach($issued_books as $ro){
 
+                                    if($row->BOOK_ID == $ro->BOOK_ID){
+
+                                        $b=2;
+                                        $date=$ro->FINISHING_DATE;
+                                        break;
+                                    }
+                                }
+                                ?>
+
+                    <?php if($b==2) {?>
+                     <tr >
+
+                        <td> <?php echo $row->TITLE; ?> </td>
+                        <td> <?php echo $row->AUTHOR; ?> </td>
+                        <td> <?php echo $row->CATEGORY; ?> </td>
+                        <td> <?php echo $row->EDITION; ?> </td>
+                        <td> <?php echo $row->KEYWORD; ?> </td>
+                        <td> <?php echo $row->EXTENSION_NO; ?> </td>
+                        <td> <?php echo $row->PUBLISHER; ?> </td>
+                        <td> <?php echo $row->SUPPLIER; ?> </td>
+                        <td> Booked until <?php echo $date;  ?></td>
+                        <td>Booked</td>
+
+
+                    </tr>
+                    
+                    <?php } else { ?>
+                    
+                   
 
                      <tr >
 
@@ -177,10 +207,15 @@ $this->load->view('includes/nav_helper', $data) ?>
 
                     </tr>
 
+
+                    <?php } ?>
+
+
                     <?php } ?>
 
 
 <?php  if($a==0 && $fine>0) { ?>
+
 
 
 
@@ -196,7 +231,7 @@ $this->load->view('includes/nav_helper', $data) ?>
                         <td> <?php echo $row->PUBLISHER; ?> </td>
                         <td> <?php echo $row->SUPPLIER; ?> </td>
                         <td>Available</td>
-                        <td>You have to pay your fine to issue book</td>
+                        <td>You have to pay fine</td>
 
 
                     </tr>
@@ -208,6 +243,36 @@ $this->load->view('includes/nav_helper', $data) ?>
 
        <?php  if($a==2 && $fine>0) { ?>
 
+
+                          <?php $b=0; if(isset ($issued_books)) foreach($issued_books as $ro){
+
+                                    if($row->BOOK_ID == $ro->BOOK_ID){
+
+                                        $b=2;
+                                        $date=$ro->FINISHING_DATE;
+                                        break;
+                                    }
+                                }
+                                ?>
+
+                    <?php if($b==2) {?>
+                     <tr >
+
+                        <td> <?php echo $row->TITLE; ?> </td>
+                        <td> <?php echo $row->AUTHOR; ?> </td>
+                        <td> <?php echo $row->CATEGORY; ?> </td>
+                        <td> <?php echo $row->EDITION; ?> </td>
+                        <td> <?php echo $row->KEYWORD; ?> </td>
+                        <td> <?php echo $row->EXTENSION_NO; ?> </td>
+                        <td> <?php echo $row->PUBLISHER; ?> </td>
+                        <td> <?php echo $row->SUPPLIER; ?> </td>
+                        <td> Booked until <?php echo $date;  ?></td>
+                        <td>Booked</td>
+
+
+                    </tr>
+
+                    <?php } else { ?>
 
 
 
@@ -221,11 +286,25 @@ $this->load->view('includes/nav_helper', $data) ?>
                         <td> <?php echo $row->EXTENSION_NO; ?> </td>
                         <td> <?php echo $row->PUBLISHER; ?> </td>
                         <td> <?php echo $row->SUPPLIER; ?> </td>
-                        <td>Not Available now will be available at <?php echo $date;  ?></td>
-                        <td>You have to pay your fine to issue book</td>
+                        <td> Will be available from <?php echo $date;  ?></td>
+                        <td>You have to pay fine</td>
 
 
                     </tr>
+
+
+                    <?php } ?>
+
+
+
+
+
+
+
+
+                   
+
+
 
                     <?php } ?>
 

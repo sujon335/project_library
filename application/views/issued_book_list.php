@@ -5,7 +5,7 @@
     function()
     {
 
-<?php $data['selected_nav'] = "booking_data_navbar";
+<?php $data['selected_nav'] = "issued_books_navbar";
 $this->load->view('includes/nav_helper', $data) ?>
 
     });
@@ -68,62 +68,52 @@ $this->load->view('includes/nav_helper', $data) ?>
 
         <div class="span9">
 
-     
-       
-   
-            <form class="navbar-search pull-right" method="post" action="<?php echo base_url(); ?>index.php/booking_data_admin/data_search_get">
 
-    
 
-                                <input type="text" name="search" class="search-query" placeholder="Search">
-                        <input type="submit" value="search" class="btn btn-success">
-                        
-                        </form><br/><br/>
-                      
-                   
 
-          
 
 
                <?php if(isset($booking_list) && $num>0 ) { ?>
 
-
+                    <div class="alert alert-info">
+                            <p>Please collect book from the library within 2 days of booking Other wise booking will be canceled</p>
+                                </div>
+                    <div class="alert alert-error">
+                            <p>Return the book within booking finishing date otherwise fine will be charged</p>
+                                </div>
                 <table class="table table-bordered">
 
                     <tr class="success">
-                        <th colspan="6">list of bookings</th>
+                        <th colspan="4">list of issued books</th>
                     </tr>
 
                <tr >
                     <th>Book Title</th>
-                     <th>Extension No</th>
-                     <th>Member Name</th>
-                     <th>Library Card No</th>
+                     <th>Booking Date</th>
                      <th>Finishing Date</th>
-                     <th>Status</th>
-                    
+                     <th>Extend Booking Date</th>
+
                 </tr>
-                
+
                  <?php  foreach($booking_list as $row){?>
 
 
                      <tr>
 
                         <td> <a href='#' id='opener' name='".$row->BOOK_ID."'><?php echo $row->TITLE; ?> </a></td>
-                        <td> <?php echo $row->EXTENSION_NO; ?> </td>
-                        <td> <?php echo $row->NAME; ?> </td>
-                        <td> <?php echo $row->LIBRARY_CARD_NO; ?> </td>
+                        <td> <?php echo $row->BOOKING_DATE; ?> </td>
                         <td> <?php echo $row->FINISHING_DATE; ?> </td>
 
-                        <?php if ($row->TAKEN==0) {  ?>
-                        <td>        <a href="<?php echo base_url(); ?>index.php/booking_data_admin/taken_book/<?php echo $row->BOOKING_ID; ?>" class="btn btn-info">Taken</a> </td>
 
-                            <?php } else { ?>
-                          <td>        <a href="<?php echo base_url(); ?>index.php/booking_data_admin/returned_book/<?php echo $row->BOOKING_ID; ?>" class="btn btn-success">Returned</a> </td>
-                        <?php  }?>
+                          <td>
+                        <form  method="post" action="<?php echo base_url(); ?>index.php/member_issued_books/extend_booking/<?php echo $row->BOOKING_ID; ?>">
+                            <input type="text" name="booking_extend_date" value="" data-date-format="dd-mm-yy" class="datepicker">
+                            <input type="submit" class ="btn btn-success" value="Send request" />
+                              </form>
+                        </td>
                     </tr>
-                    
-                 
+
+
 
                             <?php }  ?>
 
@@ -136,13 +126,15 @@ $this->load->view('includes/nav_helper', $data) ?>
                                 </div>
                     <?php  } ?>
 
-                 
 
-                
+                     <div class="alert alert-info">
+                            <p>Advance booking list</p>
+                                </div>
 
-    <?php echo $this->pagination->create_links();  ?>
-                    
-            
+
+
+
+
 
  </div>
           </div>
@@ -158,7 +150,9 @@ $this->load->view('includes/nav_helper', $data) ?>
 </script>
 
 
-
+        <script>
+    $('.datepicker').datepicker();
+    </script>
 
 
 

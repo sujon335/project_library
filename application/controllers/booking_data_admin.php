@@ -104,6 +104,7 @@ class Booking_data_admin extends CI_Controller {
             $this->db->or_like('LOWER(EXTENSION_NO)',$search);
             $this->db->or_like('LOWER(NAME)',$search);
             $this->db->or_like('LOWER(LIBRARY_CARD_NO)',$search);
+            $this->db->or_like('LOWER(FINISHING_DATE)',$search);
             $this->db->join('BOOK', 'BOOKING_DATA.BOOK_ID=BOOK.BOOK_ID');
             $this->db->join('MEMBER', 'BOOKING_DATA.MEMBER_ID=MEMBER.MEMBER_ID');
             $config['total_rows']=  $this->db->get('BOOKING_DATA')->num_rows();
@@ -120,6 +121,7 @@ class Booking_data_admin extends CI_Controller {
             $this->db->or_like('LOWER(EXTENSION_NO)',$search);
             $this->db->or_like('LOWER(NAME)',$search);
             $this->db->or_like('LOWER(LIBRARY_CARD_NO)',$search);
+            $this->db->or_like('LOWER(FINISHING_DATE)',$search);
             $this->db->join('BOOK', 'BOOKING_DATA.BOOK_ID=BOOK.BOOK_ID');
             $this->db->join('MEMBER', 'BOOKING_DATA.MEMBER_ID=MEMBER.MEMBER_ID');
             $query= $this->db->get('BOOKING_DATA',$config['per_page'],$this->uri->segment(3));
@@ -132,6 +134,12 @@ class Booking_data_admin extends CI_Controller {
 
 
     }
+
+
+
+
+
+
 
 
 

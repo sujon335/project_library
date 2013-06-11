@@ -3,13 +3,13 @@
       <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
           <div class="container">
-            <a href="<?php echo site_url(); ?>" class="brand brand-bootbus">Library Management System</a>
+            <a href="<?php echo site_url(); ?>" class="brand brand-bootbus"><i class="icon-home"></i>Library Management System</a>
             <!-- Below button used for responsive navigation -->
 
             <!-- Start: Primary navigation -->
-           
+
               <ul class="nav pull-right">
-   
+
 
 
                             <?php
@@ -23,7 +23,7 @@
 
 
 
-                
+
             <?php
             } else {
                 //LOGGED IN
@@ -42,37 +42,37 @@
                               <?php  echo $name; ?> <b></b>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="<?php echo site_url('member_auth/howkow'); ?>">Issued Books</a></li>
+                                <li><a tabindex="-1" href="<?php echo site_url('member_issued_books/show_books'); ?>">Issued Books</a></li>
                                 <li class="divider"></li>
                                 <li><a tabindex="-1" href="#">Fines</a></li>
                                 <li class="divider"></li>
                                 <li><a tabindex="-1" href="#">Edit Profile</a></li>
                             </ul>
                         </li>
-                            
+
                                   <?php } else  {
                       //admin is logged in
                       ?>
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="70" data-close-others="false">
-                        Manage Books <b ></b>
+                      <i class="icon-book"></i>  Manage Books
                     </a>
                     <ul class="dropdown-menu">
                         <li ><a tabindex="-1" href="<?php echo site_url('book_list_admin/show_books'); ?>">Book list</a></li>
                         <li class="divider"></li>
                         <li><a tabindex="-1" href="<?php echo site_url('booking_data_admin/show_booking_data'); ?>">Booking Data</a></li>
                         <li class="divider"></li>
-                        <li><a tabindex="-1" href="">Approve Booking Extend</a></li>
+                        <li><a tabindex="-1" href="<?php echo site_url('approve_booking_extend/extend_requests'); ?>">Approve Booking Extend</a></li>
                     </ul>
                 </li>
-                        
+
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="70" data-close-others="false">
-                        Manage Members<b></b>
+                      <i class="icon-user"></i>Manage Members
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a tabindex="-1" href="#">Member list</a></li>
+                        <li><a tabindex="-1" href="<?php echo site_url('member_list/show_members'); ?>">Member list</a></li>
                         <li class="divider"></li>
                         <li><a tabindex="-1" href="<?php echo site_url('member_fines/show_fines'); ?>">Member Fines</a></li>
                         <li class="divider"></li>
@@ -82,7 +82,7 @@
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="70" data-close-others="false">
-                            Settings<b></b>
+                             <i class="icon-wrench"></i>Settings<b></b>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a tabindex="-1" href="#">Update Profile</a></li>
@@ -95,7 +95,7 @@
 
                           <?php  }?>
 
-                        <li><a href="<?php echo site_url('admin_auth/logout'); ?>">Sign Out</a></li>
+                        <li><a href="<?php echo site_url('admin_auth/logout'); ?>"><i class="icon-off"></i>Sign Out</a></li>
 
 
                 <?php
@@ -103,7 +103,7 @@
                 ?>
 
               </ul>
-            
+
           </div>
         </div>
       </div>

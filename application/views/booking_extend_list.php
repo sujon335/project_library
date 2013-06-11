@@ -5,7 +5,7 @@
     function()
     {
 
-<?php $data['selected_nav'] = "booking_data_navbar";
+<?php $data['selected_nav'] = "booking_extend_navbar";
 $this->load->view('includes/nav_helper', $data) ?>
 
     });
@@ -46,10 +46,6 @@ $this->load->view('includes/nav_helper', $data) ?>
 	}
 	</style>
 
-
-
-
-
 </head>
 <body>
 
@@ -70,57 +66,49 @@ $this->load->view('includes/nav_helper', $data) ?>
 
      
        
-   
-            <form class="navbar-search pull-right" method="post" action="<?php echo base_url(); ?>index.php/booking_data_admin/data_search_get">
-
-    
-
-                                <input type="text" name="search" class="search-query" placeholder="Search">
-                        <input type="submit" value="search" class="btn btn-success">
-                        
-                        </form><br/><br/>
-                      
+         
                    
 
           
 
 
-               <?php if(isset($booking_list) && $num>0 ) { ?>
+               <?php if(isset($booking_extend_list) && $num>0 ) { ?>
 
 
                 <table class="table table-bordered">
 
-                    <tr class="success">
-                        <th colspan="6">list of bookings</th>
+                    <tr>
+                        <th colspan="10">Booking extend requests</th>
                     </tr>
 
-               <tr >
-                    <th>Book Title</th>
-                     <th>Extension No</th>
-                     <th>Member Name</th>
-                     <th>Library Card No</th>
+               <tr>
+                     <th>Book Title</th>
+                     <th>Member</th>
+                     <th>Booking Date</th>
                      <th>Finishing Date</th>
-                     <th>Status</th>
-                    
+                     <th>Extend Request date</th>
+                     <th></th>
+                     <th></th>
                 </tr>
                 
-                 <?php  foreach($booking_list as $row){?>
+                 <?php  foreach($booking_extend_list as $row){?>
 
 
-                     <tr>
-
-                        <td> <a href='#' id='opener' name='".$row->BOOK_ID."'><?php echo $row->TITLE; ?> </a></td>
-                        <td> <?php echo $row->EXTENSION_NO; ?> </td>
-                        <td> <?php echo $row->NAME; ?> </td>
-                        <td> <?php echo $row->LIBRARY_CARD_NO; ?> </td>
+                     <tr >
+                        <td> <?php echo $row->TITLE; ?> </td>
+                        <td> Name:<?php echo $row->NAME; ?><br/>
+                           Email:<?php echo $row->EMAIL; ?><br/>
+                           Library card No:<?php echo $row->LIBRARY_CARD_NO; ?>
+                        </td>
+                        <td> <?php echo $row->BOOKING_DATE; ?> </td>
                         <td> <?php echo $row->FINISHING_DATE; ?> </td>
+                        <td> <?php echo $row->EXTEND_DATE; ?> </td>
 
-                        <?php if ($row->TAKEN==0) {  ?>
-                        <td>        <a href="<?php echo base_url(); ?>index.php/booking_data_admin/taken_book/<?php echo $row->BOOKING_ID; ?>" class="btn btn-info">Taken</a> </td>
+                        
+                        <td>        <a href="<?php echo base_url(); ?>index.php/approve_booking_extend/change_finishing_date/<?php echo $row->BOOKING_ID; ?>/<?php echo $row->EXTEND_DATE; ?>" class="btn btn-success">Approve</a> </td>
+                        <td>        <a href="<?php echo base_url(); ?>index.php/approve_booking_extend/cancel_request/<?php echo $row->BOOKING_ID; ?>" class="btn btn-danger">Disapprove</a> </td>
+ 
 
-                            <?php } else { ?>
-                          <td>        <a href="<?php echo base_url(); ?>index.php/booking_data_admin/returned_book/<?php echo $row->BOOKING_ID; ?>" class="btn btn-success">Returned</a> </td>
-                        <?php  }?>
                     </tr>
                     
                  
@@ -132,7 +120,7 @@ $this->load->view('includes/nav_helper', $data) ?>
         <?php } else { ?>
                 <br/>  <br/>
                     <div class="alert alert-error">
-                            <p>No booking list found</p>
+                            <p>No request found</p>
                                 </div>
                     <?php  } ?>
 
@@ -152,6 +140,9 @@ $this->load->view('includes/nav_helper', $data) ?>
      </div>
 
 
+<br/>
+<br/>
+<br/>
 
 <script type="text/javascript" charset="utf-8">
 	$('tr:odd').css('background', '#dff0d8');
@@ -159,9 +150,4 @@ $this->load->view('includes/nav_helper', $data) ?>
 
 
 
-
-
-
 <?php $this->load->view('includes/footer') ?>
-
- 

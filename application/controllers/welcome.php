@@ -21,7 +21,26 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
                 $this->check();
+
+
+            $is_logged_in_admin = $this->session->userdata('is_logged_in_admin');
+            $is_logged_in_member = $this->session->userdata('is_logged_in_member');
+
+
+           if ((!isset($is_logged_in_admin) || $is_logged_in_admin != true) && (!isset($is_logged_in_member) || $is_logged_in_member != true)) {
+
 		$this->load->view('welcome_message');
+            }
+            else if (!isset($is_logged_in_admin) || $is_logged_in_admin != true)
+            {
+                $this->load->view('member_page');
+            }
+            else
+            {
+                    $this->load->view('admin_page');
+            }
+
+
 	}
 
         public function check()
