@@ -32,7 +32,7 @@
 
               <li class="nav-header"><?php  echo $name; ?></li>
               <li id="issued_books_navbar"><a href="<?php echo site_url('member_issued_books/show_books'); ?>">Issued Books</a></li>
-              <li><a href="#">Fines</a></li>
+              <li id="member_fine_navbar"><a href="<?php echo site_url('member_issued_books/show_fine'); ?>">Fines</a></li>
               <li><a href="#">Edit Profile</a></li>
 
             </ul>

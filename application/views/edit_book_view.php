@@ -45,13 +45,21 @@ $this->load->view('includes/nav_helper', $data) ?>
             <div class="widget-body">
               <div class="center-align">
                 <form class="form-horizontal form-signin-signup" method="post" action="<?php echo base_url(); ?>index.php/book_list_admin/book_edit/<?php echo $row->BOOK_ID; ?>">
+                 <label>title</label>
                  <input type="text" name="title" value="<?php echo $row->TITLE;?>">
+                 <label>Author</label>
                  <input type="text" name="author" value="<?php echo $row->AUTHOR;?>">
+                 <label>Category</label>
                  <input type="text" name="category" value="<?php echo $row->CATEGORY;?>">
+                 <label>Edition</label>
                   <input type="text" name="edition" value="<?php echo $row->EDITION;?>">
+                  <label>Keyword</label>
                   <input type="text" name="keyword" value="<?php echo $row->KEYWORD;?>">
+                  <label>Extension_no</label>
                  <input type="text" name="extension_no" value="<?php echo $row->EXTENSION_NO;?>">
+                 <label>Publisher</label>
                   <input type="text" name="publisher" value="<?php echo $row->PUBLISHER;?>">
+                  <label>Supplier</label>
                   <input type="text" name="supplier" value="<?php echo $row->SUPPLIER;?>">
           
                  

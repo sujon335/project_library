@@ -44,7 +44,7 @@
                             <ul class="dropdown-menu">
                                 <li><a tabindex="-1" href="<?php echo site_url('member_issued_books/show_books'); ?>">Issued Books</a></li>
                                 <li class="divider"></li>
-                                <li><a tabindex="-1" href="#">Fines</a></li>
+                                <li><a tabindex="-1" href="<?php echo site_url('member_issued_books/show_fine'); ?>">Fines</a></li>
                                 <li class="divider"></li>
                                 <li><a tabindex="-1" href="#">Edit Profile</a></li>
                             </ul>

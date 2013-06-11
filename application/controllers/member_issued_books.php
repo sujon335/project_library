@@ -29,6 +29,29 @@ class Member_issued_books extends CI_Controller {
 
 
 
+     public function show_fine()
+     {
+
+        $data=array();
+        $member_id=$this->book_model_member->get_member_id();
+        $this->db->where('MEMBER_ID',$member_id);
+        $query= $this->db->get('FINES');
+        foreach ($query->result() as $row)
+        {
+          $fine= $row->FINE;
+        }
+
+        $data['num']=$fine;
+        $this->load->view('fine_of_member',$data);
+
+     }
+
+
+
+
+
+
+
 
 
     public function show_books()
