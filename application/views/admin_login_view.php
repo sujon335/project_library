@@ -55,11 +55,7 @@ $this-> load->view('includes/nav_helper',$data)?>
 
 
 
- <br/>
- <br/>
- <br/>
- <br/>
-  <br/>
+
 
 
 <?php $this->load->view('includes/footer')?>

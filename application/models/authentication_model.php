@@ -10,12 +10,12 @@ class Authentication_model extends CI_Model {
     function validate_admin()
     {
         $this->db->where('USERNAME',$this->input->post('username',true));
-        $this->db->where('PASSWORD', $this->input->post('password',true));
+        $this->db->where('PASSWORD', md5($this->input->post('password',true)));
         $query=$this->db->get('LIBRARIAN');
 
 
         $this->db->where('EMAIL',$this->input->post('username',true));
-        $this->db->where('PASSWORD', $this->input->post('password',true));
+        $this->db->where('PASSWORD', md5($this->input->post('password',true)));
         $q=$this->db->get('LIBRARIAN');
 
 

@@ -47,7 +47,7 @@ class Member_fines extends CI_Controller {
 
             $config['base_url']=''.base_url().'index.php/member_fines/show_fines';
 
-
+            $this->db->where('FINE >',0);
             $this->db->join('MEMBER', 'FINES.MEMBER_ID=MEMBER.MEMBER_ID');
             $config['total_rows']=  $this->db->get('FINES')->num_rows();
             $config['per_page']=7;
@@ -57,8 +57,10 @@ class Member_fines extends CI_Controller {
 
 
             $this->pagination->initialize($config);
-
+            
+            $this->db->where('FINE >',0);
             $this->db->join('MEMBER', 'FINES.MEMBER_ID=MEMBER.MEMBER_ID');
+
             $query= $this->db->get('FINES',$config['per_page'],$this->uri->segment(3));
             $data['member_list']=$query->result();
             $data['num']=$config['total_rows'];

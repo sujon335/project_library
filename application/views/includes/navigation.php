@@ -36,6 +36,8 @@
                             ?>
 
 
+
+
                   <li><a href="<?php echo site_url('book_list_member/show_books'); ?>">All Books</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="70" data-close-others="false">
@@ -44,11 +46,17 @@
                             <ul class="dropdown-menu">
                                 <li><a tabindex="-1" href="<?php echo site_url('member_issued_books/show_books'); ?>">Issued Books</a></li>
                                 <li class="divider"></li>
-                                <li><a tabindex="-1" href="<?php echo site_url('member_issued_books/show_fine'); ?>">Fines</a></li>
+                             <li><a tabindex="-1" href="<?php echo site_url('member_issued_books/show_fine'); ?>">Fines</a></li>
                                 <li class="divider"></li>
-                                <li><a tabindex="-1" href="#">Edit Profile</a></li>
+                                <li><a tabindex="-1" href="<?php echo site_url('member_edit_profile/edit_profile'); ?>">Edit Profile</a></li>
                             </ul>
                         </li>
+
+
+
+
+
+
 
                                   <?php } else  {
                       //admin is logged in
@@ -85,9 +93,9 @@
                              <i class="icon-wrench"></i>Settings<b></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a tabindex="-1" href="#">Update Profile</a></li>
+                            <li><a tabindex="-1" href="<?php echo site_url('admin_edit_profile/edit_profile'); ?>">Update Profile</a></li>
                             <li class="divider"></li>
-                            <li><a tabindex="-1" href="#">Create Librarian</a></li>
+                            <li><a data-toggle="modal" href="#create_lib">Create Librarian</a></li>
 
                         </ul>
                     </li>
@@ -107,5 +115,14 @@
           </div>
         </div>
       </div>
+
+
+
+
+
       <!-- End: Navigation wrapper -->
     </header>
+
+
+
+

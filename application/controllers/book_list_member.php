@@ -70,7 +70,14 @@ class Book_list_member extends CI_Controller {
             $this->db->where('MEMBER_ID',$member_id);
             $qu=$this->db->get('BOOKING_DATA');
             $data['issued_books']= $qu->result();
+            $data['n']=$qu->num_rows();
 
+
+
+
+            $this->db->where('MEMBER_ID',$member_id);
+            $que=$this->db->get('ADVANCE_BOOKING');
+            $data['adv_book']= $que->result();
 
 
 
@@ -192,6 +199,23 @@ class Book_list_member extends CI_Controller {
     }
 
 
+
+
+
+
+    function advance_book($booking_id)
+    {
+        
+                $member_id=$this->book_model_member->get_member_id();
+
+               $query="INSERT INTO ADVANCE_BOOKING (ID,BOOKING_ID,MEMBER_ID,BOOKING_DATE_TIME)
+               VALUES (SEQ_USER.nextval,'$booking_id','$member_id',CURRENT_TIMESTAMP)";
+
+             $insert=$this->db->query($query);
+
+             redirect('book_list_member/show_books');
+        
+    }
 
 
 

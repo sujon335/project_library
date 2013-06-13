@@ -44,8 +44,9 @@ $this->load->view('includes/nav_helper', $data) ?>
             <h4 class="widget-header"><i class="icon-pencil"></i> Add new book in the library</h4>
             <div class="widget-body">
               <div class="center-align">
-                <form class="form-horizontal form-signin-signup" method="post" action="<?php echo base_url(); ?>index.php/book_list_admin/book_edit/<?php echo $row->BOOK_ID; ?>">
-                 <label>title</label>
+                <form  method="post" action="<?php echo base_url(); ?>index.php/book_list_admin/book_edit/<?php echo $row->BOOK_ID; ?>">
+                    <fieldset>
+                    <label>title</label>
                  <input type="text" name="title" value="<?php echo $row->TITLE;?>">
                  <label>Author</label>
                  <input type="text" name="author" value="<?php echo $row->AUTHOR;?>">
@@ -66,8 +67,10 @@ $this->load->view('includes/nav_helper', $data) ?>
 <br/>
       
                       <input type="submit" value="update and go back to the list" class="btn btn-primary btn-large"> &nbsp; <a href="<?php echo base_url(); ?>index.php/book_list_admin/show_books" class="btn btn-primary btn-large">Cancel</a>
-                 
+
+                      </fieldset>
                 </form>
+
                   <?php } }?>
               </div>
 

@@ -76,6 +76,51 @@ class Book_model extends CI_Model {
 
 
 
+    function get_librarian_id()
+    {
+        $name=$this->session->userdata('username');
+
+        $this->db->where('USERNAME',$name);
+        $query=$this->db->get('LIBRARIAN');
+
+
+        if($query->num_rows==1)
+        {
+           foreach ($query->result() as $row)
+            {
+                $id= $row->ID;
+            }
+
+        }
+
+        else
+        {
+                $this->db->where('EMAIL',$name);
+                $query=$this->db->get('LIBRARIAN');
+                foreach ($query->result() as $row)
+                {
+                    $id= $row->ID;
+                }
+
+        }
+
+        return $id;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 ?>

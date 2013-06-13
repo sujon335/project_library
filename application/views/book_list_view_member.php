@@ -188,10 +188,22 @@ $this->load->view('includes/nav_helper', $data) ?>
                     </tr>
                     
                     <?php } else { ?>
-                    
-                   
 
-                     <tr >
+
+
+                    <?php $c=0; if(isset ($adv_book)) foreach($adv_book as $t){
+
+                                    if($r->BOOKING_ID == $t->BOOKING_ID){
+
+                                        $c=2;
+                                        break;
+                                    }
+                                }
+                                ?>
+                    
+                 <?php  if($c==2) {  ?>
+
+                     <tr>
 
                         <td> <?php echo $row->TITLE; ?> </td>
                         <td> <?php echo $row->AUTHOR; ?> </td>
@@ -202,11 +214,31 @@ $this->load->view('includes/nav_helper', $data) ?>
                         <td> <?php echo $row->PUBLISHER; ?> </td>
                         <td> <?php echo $row->SUPPLIER; ?> </td>
                         <td> Will be available from <?php echo $date;  ?></td>
-                        <td>   <a href="<?php echo base_url(); ?>index.php/book_list_member/advance_book/<?php echo $row->BOOK_ID; ?>" class="btn btn-info">Advance Book</a></td>
+                        <td>Booked in advance</td>
 
 
                     </tr>
 
+                    <?php } else { ?>
+
+
+                     <tr>
+
+                        <td> <?php echo $row->TITLE; ?> </td>
+                        <td> <?php echo $row->AUTHOR; ?> </td>
+                        <td> <?php echo $row->CATEGORY; ?> </td>
+                        <td> <?php echo $row->EDITION; ?> </td>
+                        <td> <?php echo $row->KEYWORD; ?> </td>
+                        <td> <?php echo $row->EXTENSION_NO; ?> </td>
+                        <td> <?php echo $row->PUBLISHER; ?> </td>
+                        <td> <?php echo $row->SUPPLIER; ?> </td>
+                        <td> Will be available from <?php echo $date;  ?></td>
+                        <td>   <a href="<?php echo base_url(); ?>index.php/book_list_member/advance_book/<?php echo $r->BOOKING_ID; ?>" class="btn btn-info">Advance</a></td>
+
+
+                    </tr>
+
+                    <?php } ?>
 
                     <?php } ?>
 

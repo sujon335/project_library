@@ -35,30 +35,14 @@ $this->load->view('includes/nav_helper', $data) ?>
         <div class="span3">
 
 
-
-
-
-
                <?php if($num>0 ) { ?>
 
-                    <div class="alert alert-error">
-                                  <p>Your fine is <?php echo $num; ?> taka</p>
-                                </div>
- 
-        <?php } else { ?>
-                <br/>  <br/>
-                    <div class="alert alert-info">
-                            <p>Your fine is 0 taka</p>
-                                </div>
+            <div class="alert alert-error">Your fine is <?php echo $num; ?> taka </div>
+                <?php  } else { ?>
+
+            <div class="alert alert-info">Your fine is 0 taka </div>
+
                     <?php  } ?>
-
-
-
-
-
-
-
-
 
  </div>
           </div>

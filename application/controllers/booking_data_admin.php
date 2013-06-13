@@ -10,7 +10,8 @@ class Booking_data_admin extends CI_Controller {
         $this->load->database();
         $this->load->helper('url');
         /* ------------------ */
-
+      
+        
         $is_logged_in=$this->session->userdata('is_logged_in_admin');
         if (!isset($is_logged_in) || $is_logged_in != TRUE) {
 
@@ -38,9 +39,45 @@ class Booking_data_admin extends CI_Controller {
       function returned_book($booking_id)
         {
 
-        $this->db->where('BOOKING_ID',$booking_id);
-        $this->db->delete('BOOKING_DATA');
+          $this->db->where('BOOKING_ID',$booking_id);
+          $this->db->order_by('BOOKING_DATE_TIME');
+          $query=$this->db->get('ADVANCE_BOOKING');
+
+          if($query->num_rows>=1){
+
+              foreach ($query->result() as $row) {
+
+                  $member_id=$row->MEMBER_ID;
+
+                    $q="UPDATE BOOKING_DATA
+                  set
+                  MEMBER_ID = '$member_id',
+                  BOOKING_DATE = SYSDATE,
+                  TAKEN=0,
+                  FINISHING_DATE = SYSDATE+14 WHERE BOOKING_ID='$booking_id'";
+
+                $update=$this->db->query($q);
+
+                break;
+
+              }
+
+          }
+
+          else{
+
+          
+            $this->db->where('BOOKING_ID',$booking_id);
+            $this->db->delete('BOOKING_DATA');
+
+          }
+
+
+
+
+
         redirect('booking_data_admin/show_booking_data');
+        
         }
 
 

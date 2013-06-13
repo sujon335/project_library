@@ -5,11 +5,14 @@
     function()
     {
 
-<?php $data['selected_nav'] = "";
+<?php $data['selected_nav'] = "edit_profile_navbar";
 $this->load->view('includes/nav_helper', $data) ?>
 
     });
 </script>
+
+
+
 
 
 
@@ -18,20 +21,29 @@ $this->load->view('includes/nav_helper', $data) ?>
 
     <?php $this->load->view('includes/navigation') ?>
 
+
     <div class="content">
       <div class="container">
-        <div class="page-header">
-       <?php  $name=$this->session->userdata('username'); ?>
-          <p>Welcome <?php echo $name; ?> </p>
-        </div>
+
+
       <div class="row-fluid">
         <div class="span3">
 
         <?php $this-> load->view('includes/side_bar')?>
         </div>
 
+        <div class="span3">
 
 
+
+        <div class="alert alert-info"><?php echo validation_errors(); if(isset($msg)) echo $msg; ?></div>
+
+
+
+
+
+
+ </div>
           </div>
 
 
@@ -41,4 +53,8 @@ $this->load->view('includes/nav_helper', $data) ?>
 
 
 
+
+
 <?php $this->load->view('includes/footer') ?>
+
+ 

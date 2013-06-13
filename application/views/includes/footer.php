@@ -20,10 +20,7 @@
                 //LOGGED IN
             ?>
 
-                      <?php if (!isset($is_logged_in_admin) || $is_logged_in_admin != true)
-                            {
-                          //member is logged in member nabbars
-                            ?>
+
 
 
       <div class="container">
@@ -85,7 +82,7 @@
       <hr class="footer-divider">
 
 
-       <?php  }?>
+   
 <?php  }?>
       <div class="container">
 
