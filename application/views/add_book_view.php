@@ -17,7 +17,7 @@ $this->load->view('includes/nav_helper', $data) ?>
 
 
   <!-- Start: MAIN CONTENT -->
-    <div class="content">
+     <div class="content" style="min-height: 450px">
       <div class="container">
 
       <div class="row-fluid">

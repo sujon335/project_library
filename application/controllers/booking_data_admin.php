@@ -48,6 +48,11 @@ class Booking_data_admin extends CI_Controller {
               foreach ($query->result() as $row) {
 
                   $member_id=$row->MEMBER_ID;
+                  $this->db->where('MEMBER_ID',$member_id);
+                  $quer=$this->db->get('BOOKING_DATA');
+                  if($quer->num_rows>=4){
+                      continue;
+                  }
 
                     $q="UPDATE BOOKING_DATA
                   set
@@ -61,6 +66,18 @@ class Booking_data_admin extends CI_Controller {
                 break;
 
               }
+
+//            $this->db->where('MEMBER_ID',$member_id);
+//            $q=$this->db->get('MEMBER');
+//            foreach($q->result() as $row)
+//            {
+//                $email=$row->EMAIL;
+//            }
+//
+//             $this->advance_booking_mail($email);
+
+
+
 
           }
 
@@ -174,6 +191,71 @@ class Booking_data_admin extends CI_Controller {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+       function advance_booking_mail($email)
+        {
+
+               $data=array();
+
+
+
+
+
+
+
+                   $base=base_url();
+
+                    $sender_mail="sujon335@yahoo.com";
+                    $sender_name="Online Library Management";
+                    $subject="Membership Approval confirmation";
+
+                    $message="You have just issued a book from $base
+                                which you have requested  advance.please check your issued books section
+                                thank you.
+                            ";
+
+
+
+
+                    $config=Array(
+                    'protocol'=>'smtp',
+                    'smtp_host'=>'ssl://smtp.googlemail.com',
+                    'smtp_port'=>465,
+                    'smtp_user'=>'gkabswebsite@gmail.com',
+                    'smtp_pass'=>'gkabswebsitepassword'
+                    );
+                    $this->load->library('email',$config);
+                    $this->email->set_newline("\r\n");
+
+                    $this->email->from($sender_mail,$sender_name);
+                    $this->email->to($this->input->post('email'));
+                    $this->email->subject($subject);
+                    $this->email->message($message);
+
+                    if($this->email->send())
+                    {
+                        redirect('approve_member/disapproved_members');
+                    }
+                    else
+                    {
+                        show_error($this->email->print_debugger());
+                    }
+
+
+
+
+        }
 
 
 

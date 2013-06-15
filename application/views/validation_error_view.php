@@ -22,7 +22,7 @@ $this->load->view('includes/nav_helper', $data) ?>
     <?php $this->load->view('includes/navigation') ?>
 
 
-    <div class="content">
+     <div class="content" style="min-height: 450px">
       <div class="container">
 
 
@@ -32,7 +32,7 @@ $this->load->view('includes/nav_helper', $data) ?>
         <?php $this-> load->view('includes/side_bar')?>
         </div>
 
-        <div class="span3">
+        <div class="span5">
 
 
 

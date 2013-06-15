@@ -6,9 +6,12 @@ class Approve_member extends CI_Controller {
     public function __construct() {
          parent::__construct();
 
+        $this->load->helper('date');
+        $this->load->helper('url');
+        $this->load->helper('download');
+        $this->load->helper(array('form', 'url'));
         $this->load->library('pagination');
         $this->load->database();
-        $this->load->helper('url');
         /* ------------------ */
         $this->load->model('book_model');
 
@@ -35,6 +38,16 @@ class Approve_member extends CI_Controller {
 //
 //        $insert=$this->db->query($q);
         $update=$this->db->query($query);
+
+
+//            $this->db->where('MEMBER_ID',$member_id);
+//            $q=$this->db->get('MEMBER');
+//            foreach($q->result() as $row)
+//            {
+//                $email=$row->EMAIL;
+//            }
+//
+//        $this->approval_mail($email);
 
         redirect('approve_member/disapproved_members');
         
@@ -82,6 +95,65 @@ class Approve_member extends CI_Controller {
            $this->load->view('disapproved_members_list',$data);
 
     }
+
+
+    
+
+       function approval_mail($email)
+        {
+
+               $data=array();
+
+
+
+
+
+
+
+                   $base=base_url();
+
+                    $sender_mail="sujon335@yahoo.com";
+                    $sender_name="Online Library Management";
+                    $subject="Membership Approval confirmation";
+
+                    $message="Your membership request for $base
+                                has been approved.you can sine in now
+                                thank you.
+                            ";
+
+
+
+
+                    $config=Array(
+                    'protocol'=>'smtp',
+                    'smtp_host'=>'ssl://smtp.googlemail.com',
+                    'smtp_port'=>465,
+                    'smtp_user'=>'gkabswebsite@gmail.com',
+                    'smtp_pass'=>'gkabswebsitepassword'
+                    );
+                    $this->load->library('email',$config);
+                    $this->email->set_newline("\r\n");
+
+                    $this->email->from($sender_mail,$sender_name);
+                    $this->email->to($this->input->post('email'));
+                    $this->email->subject($subject);
+                    $this->email->message($message);
+
+                    if($this->email->send())
+                    {
+                        redirect('approve_member/disapproved_members');
+                    }
+                    else
+                    {
+                        show_error($this->email->print_debugger());
+                    }
+
+
+
+
+        }
+
+
 
 
 

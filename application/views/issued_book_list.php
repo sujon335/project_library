@@ -56,7 +56,7 @@ $this->load->view('includes/nav_helper', $data) ?>
     <?php $this->load->view('includes/navigation') ?>
 
 
-    <div class="content">
+      <div class="content" style="min-height: 450px">
       <div class="container">
 
 
@@ -127,9 +127,48 @@ $this->load->view('includes/nav_helper', $data) ?>
                     <?php  } ?>
 
 
-                     <div class="alert alert-info">
-                            <p>Advance booking list</p>
+<?php if(isset($adv_booking_list) && $n>0 ) { ?>
+
+               <table class="table table-bordered">
+
+                    <tr class="success">
+                        <th colspan="4">Advance bookings</th>
+                    </tr>
+
+               <tr >
+                    <th>Book Title</th>
+                    <th>Author</th>
+                     <th>Available Date</th>
+
+                </tr>
+
+                 <?php  foreach($adv_booking_list as $row){?>
+
+
+                     <tr>
+
+                        <td> <a href='#' id='opener' name='".$row->BOOK_ID."'><?php echo $row->TITLE; ?> </a></td>
+                       <td> <?php echo $row->AUTHOR; ?> </td>
+                        <td> <?php echo $row->FINISHING_DATE; ?> </td>
+
+
+
+                    </tr>
+
+
+
+                            <?php }  ?>
+
+                       </table>
+
+        <?php } else { ?>
+                <br/>  <br/>
+                    <div class="alert alert-error">
+                            <p>No advance booking list found</p>
                                 </div>
+                    <?php  } ?>
+
+
 
 
 

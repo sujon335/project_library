@@ -215,11 +215,40 @@ end;
   
   
   
+  create or replace 
+trigger del_adv_booking
+after update of member_id on BOOKING_DATA
+for each row
+declare
+	mem number;
+  booking number;
+begin
+	
+        mem := :new.member_id;
+        booking:= :new.booking_id;
+	
+      DELETE FROM advance_booking WHERE member_id=mem AND booking_id=booking;
+		
+end;
   
   
   
-  
-  
+  create or replace 
+trigger check_tot_book_no
+after insert or update on BOOKING_DATA
+declare
+	tot number;
+begin
+	
+	for rec in (select * from MEMBER) loop
+		select count(*) into tot
+		from BOOKING_DATA
+		where member_id = rec.member_id;
+		if  tot > 4 then
+			raise_application_error(-20003,'member cannot book more than 4 books');	
+		end if;
+	end loop;	
+end;
   
   
   

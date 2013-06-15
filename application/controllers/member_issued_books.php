@@ -76,6 +76,15 @@ class Member_issued_books extends CI_Controller {
 
 
 
+            $this->db->join('BOOKING_DATA','ADVANCE_BOOKING.BOOKING_ID=BOOKING_DATA.BOOKING_ID');
+            $this->db->join('BOOK', 'BOOKING_DATA.BOOK_ID=BOOK.BOOK_ID');
+            $this->db->where('ADVANCE_BOOKING.MEMBER_ID',$member_id);
+            $query= $this->db->get('ADVANCE_BOOKING');
+            $data['adv_booking_list']=$query->result();
+            $data['n']=$query->num_rows;
+
+
+
            $this->load->view('issued_book_list',$data);
 
     }
