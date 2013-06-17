@@ -13,8 +13,7 @@
      <div class="content" style="min-height: 450px">
       <div class="container">
         <div class="page-header">
-       <?php  $name=$this->session->userdata('username'); ?>
-          <p>Welcome <?php echo $name; ?> </p>
+
         </div>
 
       <div class="row-fluid">

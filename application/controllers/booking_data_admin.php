@@ -22,6 +22,18 @@ class Booking_data_admin extends CI_Controller {
      }
 
 
+      function get_book_info($book_id)
+      {
+          $this->db->where('BOOK_ID',$book_id);
+           $query= $this->db->get('BOOK');
+            $data['selected_book']=$query->result();
+            $this->load->view('book_info',$data);
+
+          
+      }
+
+
+
 
       function taken_book($booking_id)
         {

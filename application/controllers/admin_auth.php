@@ -20,7 +20,7 @@ class Admin_auth extends CI_Controller {
                                     $this->load->view('admin_login_view');
                            }
                          elseif ($this->form_validation->run() == FALSE && (isset($is_logged_in_admin) || $is_logged_in_admin = true)) {
-                                    $this->load->view('admin_page');
+                                    redirect('book_list_admin/show_books');
                                      }
 
                            else
@@ -36,7 +36,7 @@ class Admin_auth extends CI_Controller {
                                      $this->load->library('session');
                                      $this->session->set_userdata($data);
 
-                                     $this->load->view('admin_page');
+                                      redirect('book_list_admin/show_books');
                                    }
 
                                    else

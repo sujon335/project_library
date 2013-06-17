@@ -107,13 +107,17 @@ $this->load->view('includes/nav_helper', $data) ?>
                  <?php  foreach($booking_list as $row){?>
 
 
-                     <tr>
+                     <tr >
 
-                        <td> <a href='#' id='opener' name='".$row->BOOK_ID."'><?php echo $row->TITLE; ?> </a></td>
+                        <td id="opener-<?php echo $row->BOOK_ID; ?>"> <a href='#'><?php echo $row->TITLE; ?> </a></td>
                         <td> <?php echo $row->EXTENSION_NO; ?> </td>
                         <td> <?php echo $row->NAME; ?> </td>
                         <td> <?php echo $row->LIBRARY_CARD_NO; ?> </td>
                         <td> <?php echo $row->FINISHING_DATE; ?> </td>
+
+
+
+
 
                         <?php if ($row->TAKEN==0) {  ?>
                         <td>        <a href="<?php echo base_url(); ?>index.php/booking_data_admin/taken_book/<?php echo $row->BOOKING_ID; ?>" class="btn btn-info">Taken</a> </td>
@@ -121,6 +125,7 @@ $this->load->view('includes/nav_helper', $data) ?>
                             <?php } else { ?>
                           <td>        <a href="<?php echo base_url(); ?>index.php/booking_data_admin/returned_book/<?php echo $row->BOOKING_ID; ?>" class="btn btn-success">Returned</a> </td>
                         <?php  }?>
+
                     </tr>
                     
                  
@@ -152,6 +157,41 @@ $this->load->view('includes/nav_helper', $data) ?>
      </div>
 
 
+
+    
+<div id="create_lib" class="modal hide fade in" style="display: none; ">
+<div class="modal-header">
+<a class="close" data-dismiss="modal" color="red" >Close</a>
+<h3>Book details</h3>
+</div>
+<div id="pop-up-modal" class="modal-body">
+
+
+
+</div>
+<div class="modal-footer">
+
+</div>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+    $(function(){
+
+        $("#opener-<?php echo $row->BOOK_ID; ?>").click(function(){
+
+            $.get("<?php echo base_url(); ?>index.php/booking_data_admin/get_book_info/<?php echo $row->BOOK_ID; ?>",function(data){
+
+                $("#pop-up-modal").html(data);
+            });
+        });
+    });
+</script>
+
+    
 
 <script type="text/javascript" charset="utf-8">
 	$('tr:odd').css('background', '#dff0d8');

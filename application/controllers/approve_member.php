@@ -39,7 +39,7 @@ class Approve_member extends CI_Controller {
 //        $insert=$this->db->query($q);
         $update=$this->db->query($query);
 
-
+//
 //            $this->db->where('MEMBER_ID',$member_id);
 //            $q=$this->db->get('MEMBER');
 //            foreach($q->result() as $row)

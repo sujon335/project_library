@@ -11,40 +11,40 @@ $this->load->view('includes/nav_helper', $data) ?>
     });
 </script>
 
-	<style type="text/css" media="screen">
+<style type="text/css" media="screen">
 
 
-	td {
-	 border-right: 1px solid #aaaaaa;
-	 padding: 1em;
-	}
+    td {
+        border-right: 1px solid #aaaaaa;
+        padding: 1em;
+    }
 
-	td:last-child {
-	 border-right: none;
-	}
+    td:last-child {
+        border-right: none;
+    }
 
-	th {
-	 text-align: left;
-	 padding-left: 1em;
-	 background: #cac9c9;
-	border-bottom: 1px solid white;
-	border-right: 1px solid #aaaaaa;
-	}
+    th {
+        text-align: left;
+        padding-left: 1em;
+        background: #cac9c9;
+        border-bottom: 1px solid white;
+        border-right: 1px solid #aaaaaa;
+    }
 
-	#pagination a, #pagination strong {
-	 background: #e3e3e3;
-	 padding: 4px 7px;
-	 text-decoration: none;
-	border: 1px solid #cac9c9;
-	color: #292929;
-	font-size: 13px;
-	}
+    #pagination a, #pagination strong {
+        background: #e3e3e3;
+        padding: 4px 7px;
+        text-decoration: none;
+        border: 1px solid #cac9c9;
+        color: #292929;
+        font-size: 13px;
+    }
 
-	#pagination strong, #pagination a:hover {
-	 font-weight: normal;
-	 background: #cac9c9;
-	}
-	</style>
+    #pagination strong, #pagination a:hover {
+        font-weight: normal;
+        background: #cac9c9;
+    }
+</style>
 
 
 </head>
@@ -53,329 +53,345 @@ $this->load->view('includes/nav_helper', $data) ?>
     <?php $this->load->view('includes/navigation') ?>
 
 
-      <div class="content" style="min-height: 450px">
-      <div class="container">
+    <div class="content" style="min-height: 450px">
+        <div class="container">
 
 
-      <div class="row-fluid">
-        <div class="span2">
+            <div class="row-fluid">
+                <div class="span2">
 
-        <?php $this-> load->view('includes/side_bar')?>
-        </div>
+                    <?php $this->load->view('includes/side_bar') ?>
+                </div>
 
-        <div class="span10">
+                <div class="span10">
 
-     
-       
 
-            <form class="navbar-search pull-right" method="post" action="<?php echo base_url(); ?>index.php/book_list_member/book_search_get">
 
-                       <i class="icon-search"></i> Search type
-                  <select name="search_type" >
-                    <option value="all">-----</option>
-                    <option value="TITLE">By Title</option>
-                    <option value="CATEGORY">By Category</option>
-                    <option value="AUTHOR">By Author</option>
-                    <option value="KEYWORD">By Keyword</option>
-                    <option value="PUBLISHER">By Publisher</option>
-                </select>
 
-                                <input type="text" name="search" class="search-query" placeholder="Search">
+                    <form class="navbar-search pull-right" method="post" action="<?php echo base_url(); ?>index.php/book_list_member/book_search_get">
+
+                        <i class="icon-search"></i> Search type
+                        <select name="search_type" >
+                            <option value="all">-----</option>
+                            <option value="TITLE">By Title</option>
+                            <option value="CATEGORY">By Category</option>
+                            <option value="AUTHOR">By Author</option>
+                            <option value="KEYWORD">By Keyword</option>
+                            <option value="PUBLISHER">By Publisher</option>
+                        </select>
+
+                        <input type="text" name="search" class="search-query" placeholder="Search">
                         <input type="submit" value="search" class="btn btn-success">
-                        
-                        </form>
-                      
-                   
 
-          
-
-
-               <?php if(isset($book_list) && $num>0 ) { ?>
-
-
-                <table class="table table-bordered">
-
-                    <tr >
-                        <th colspan="10">All books list(Total <?php echo $num; ?> Books)</th>
-                    </tr>
-
-               <tr >
-                    <th>Title</th>
-                     <th>Author</th>
-                     <th>Category</th>
-                     <th>Edition</th>
-                     <th>Keyword</th>
-                     <th>Extension no</th>
-                     <th>Publisher</th>
-                     <th>Supplier</th>
-                     <th>Availability</th>
-                     <th>booking</th>
-                </tr>
-                
-                 <?php  foreach($book_list as $row){?>
+                    </form>
 
 
 
-                
-                               <?php $a=0; if(isset ($record)) foreach($record as $r){
 
-                                    if($row->BOOK_ID == $r->BOOK_ID){
-                                        
-                                        $a=2;
-                                        $date=$r->FINISHING_DATE;
+
+
+                    <?php if (isset($book_list) && $num > 0) {
+ ?>
+
+
+                        <table class="table table-bordered">
+
+                            <tr >
+                                <th colspan="10">All books list(Total <?php echo $num; ?> Books)</th>
+                            </tr>
+
+                            <tr >
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Category</th>
+                                <th>Edition</th>
+                                <th>Keyword</th>
+                                <th>Extension no</th>
+                                <th>Publisher</th>
+                                <th>Supplier</th>
+                                <th>Availability</th>
+                                <th>booking</th>
+                            </tr>
+
+<?php foreach ($book_list as $row) { ?>
+
+
+
+
+                        <?php
+                            $a = 0;
+                            if (isset($record))
+                                foreach ($record as $r) {
+
+                                    if ($row->BOOK_ID == $r->BOOK_ID) {
+
+                                        $a = 2;
+                                        $date = $r->FINISHING_DATE;
                                         break;
                                     }
                                 }
-                                ?>
+                        ?>
 
 
 
-<?php if($a==0 && $fine==0){ ?>
-
-
-                
-
-                     <tr >
-
-                        <td> <?php echo $row->TITLE; ?> </td>
-                        <td> <?php echo $row->AUTHOR; ?> </td>
-                        <td> <?php echo $row->CATEGORY; ?> </td>
-                        <td> <?php echo $row->EDITION; ?> </td>
-                        <td> <?php echo $row->KEYWORD; ?> </td>
-                        <td> <?php echo $row->EXTENSION_NO; ?> </td>
-                        <td> <?php echo $row->PUBLISHER; ?> </td>
-                        <td> <?php echo $row->SUPPLIER; ?> </td>
-                        <td>Available</td>
-                        <td>        <a href="<?php echo base_url(); ?>index.php/book_list_member/issue_book/<?php echo $row->BOOK_ID; ?>" class="btn btn-success">Issue</a></td>
- 
-
-                    </tr>
-
-                    <?php } ?>
+<?php if ($a == 0 && $fine == 0) { ?>
 
 
 
 
-       <?php  if($a==2 && $fine==0) { ?>
+                                <tr >
+
+                                    <td> <?php echo $row->TITLE; ?> </td>
+                                    <td> <?php echo $row->AUTHOR; ?> </td>
+                                    <td> <?php echo $row->CATEGORY; ?> </td>
+                                    <td> <?php echo $row->EDITION; ?> </td>
+                                    <td> <?php echo $row->KEYWORD; ?> </td>
+                                    <td> <?php echo $row->EXTENSION_NO; ?> </td>
+                                    <td> <?php echo $row->PUBLISHER; ?> </td>
+                                    <td> <?php echo $row->SUPPLIER; ?> </td>
+                                    <td>Available</td>
+                                    <td>        <a href="<?php echo base_url(); ?>index.php/book_list_member/issue_book/<?php echo $row->BOOK_ID; ?>" class="btn btn-success">Issue</a></td>
 
 
-                          <?php $b=0; if(isset ($issued_books)) foreach($issued_books as $ro){
+                                </tr>
 
-                                    if($row->BOOK_ID == $ro->BOOK_ID){
+<?php } ?>
 
-                                        $b=2;
-                                        $date=$ro->FINISHING_DATE;
-                                        break;
+
+
+
+                        <?php if ($a == 2 && $fine == 0) {
+ ?>
+
+
+                        <?php
+                                $b = 0;
+                                if (isset($issued_books))
+                                    foreach ($issued_books as $ro) {
+
+                                        if ($row->BOOK_ID == $ro->BOOK_ID) {
+
+                                            $b = 2;
+                                            $date = $ro->FINISHING_DATE;
+                                            break;
+                                        }
                                     }
-                                }
-                                ?>
+                        ?>
 
-                    <?php if($b==2) {?>
-                     <tr >
+<?php if ($b == 2) { ?>
+                                    <tr >
 
-                        <td> <?php echo $row->TITLE; ?> </td>
-                        <td> <?php echo $row->AUTHOR; ?> </td>
-                        <td> <?php echo $row->CATEGORY; ?> </td>
-                        <td> <?php echo $row->EDITION; ?> </td>
-                        <td> <?php echo $row->KEYWORD; ?> </td>
-                        <td> <?php echo $row->EXTENSION_NO; ?> </td>
-                        <td> <?php echo $row->PUBLISHER; ?> </td>
-                        <td> <?php echo $row->SUPPLIER; ?> </td>
-                        <td> Booked until <?php echo $date;  ?></td>
-                        <td>Booked</td>
-
-
-                    </tr>
-                    
-                    <?php } else { ?>
+                                        <td> <?php echo $row->TITLE; ?> </td>
+                                        <td> <?php echo $row->AUTHOR; ?> </td>
+                                        <td> <?php echo $row->CATEGORY; ?> </td>
+                                        <td> <?php echo $row->EDITION; ?> </td>
+                                        <td> <?php echo $row->KEYWORD; ?> </td>
+                                        <td> <?php echo $row->EXTENSION_NO; ?> </td>
+                                        <td> <?php echo $row->PUBLISHER; ?> </td>
+                                        <td> <?php echo $row->SUPPLIER; ?> </td>
+                                        <td> Booked until <?php echo $date; ?></td>
+                                        <td>Booked</td>
 
 
+                                    </tr>
 
-                    <?php $c=0; if(isset ($adv_book)) foreach($adv_book as $t){
+                        <?php } else {
+ ?>
 
-                                    if($r->BOOKING_ID == $t->BOOKING_ID){
 
-                                        $c=2;
-                                        break;
+
+<?php
+                                    $c = 0;
+                                    if (isset($adv_book))
+                                        foreach ($adv_book as $t) {
+
+                                            if ($r->BOOKING_ID == $t->BOOKING_ID) {
+
+                                                $c = 2;
+                                                break;
+                                            }
+                                        }
+?>
+
+<?php if ($c == 2) { ?>
+
+                                        <tr>
+
+                                            <td> <?php echo $row->TITLE; ?> </td>
+                                            <td> <?php echo $row->AUTHOR; ?> </td>
+                                            <td> <?php echo $row->CATEGORY; ?> </td>
+                                            <td> <?php echo $row->EDITION; ?> </td>
+                                            <td> <?php echo $row->KEYWORD; ?> </td>
+                                            <td> <?php echo $row->EXTENSION_NO; ?> </td>
+                                            <td> <?php echo $row->PUBLISHER; ?> </td>
+                                            <td> <?php echo $row->SUPPLIER; ?> </td>
+                                            <td> Will be available from <?php echo $date; ?></td>
+                                            <td>Booked in advance</td>
+
+
+                                        </tr>
+
+<?php } else { ?>
+
+
+                                        <tr>
+
+                                            <td> <?php echo $row->TITLE; ?> </td>
+                                            <td> <?php echo $row->AUTHOR; ?> </td>
+                                            <td> <?php echo $row->CATEGORY; ?> </td>
+                                            <td> <?php echo $row->EDITION; ?> </td>
+                                            <td> <?php echo $row->KEYWORD; ?> </td>
+                                            <td> <?php echo $row->EXTENSION_NO; ?> </td>
+                                            <td> <?php echo $row->PUBLISHER; ?> </td>
+                                            <td> <?php echo $row->SUPPLIER; ?> </td>
+                                            <td> Will be available from <?php echo $date; ?></td>
+                                            <td>   <a href="<?php echo base_url(); ?>index.php/book_list_member/advance_book/<?php echo $r->BOOKING_ID; ?>" class="btn btn-info">Advance</a></td>
+
+
+                                        </tr>
+
+<?php } ?>
+
+<?php } ?>
+
+
+<?php } ?>
+
+
+<?php if ($a == 0 && $fine > 0) { ?>
+
+
+
+
+
+                                <tr >
+
+                                    <td> <?php echo $row->TITLE; ?> </td>
+                                    <td> <?php echo $row->AUTHOR; ?> </td>
+                                    <td> <?php echo $row->CATEGORY; ?> </td>
+                                    <td> <?php echo $row->EDITION; ?> </td>
+                                    <td> <?php echo $row->KEYWORD; ?> </td>
+                                    <td> <?php echo $row->EXTENSION_NO; ?> </td>
+                                    <td> <?php echo $row->PUBLISHER; ?> </td>
+                                    <td> <?php echo $row->SUPPLIER; ?> </td>
+                                    <td>Available</td>
+                                    <td>You have to pay fine</td>
+
+
+                                </tr>
+
+                        <?php } ?>
+
+
+
+
+                        <?php if ($a == 2 && $fine > 0) {
+ ?>
+
+
+<?php
+                                $b = 0;
+                                if (isset($issued_books))
+                                    foreach ($issued_books as $ro) {
+
+                                        if ($row->BOOK_ID == $ro->BOOK_ID) {
+
+                                            $b = 2;
+                                            $date = $ro->FINISHING_DATE;
+                                            break;
+                                        }
                                     }
-                                }
-                                ?>
-                    
-                 <?php  if($c==2) {  ?>
+?>
 
-                     <tr>
+<?php if ($b == 2) { ?>
+                                    <tr >
 
-                        <td> <?php echo $row->TITLE; ?> </td>
-                        <td> <?php echo $row->AUTHOR; ?> </td>
-                        <td> <?php echo $row->CATEGORY; ?> </td>
-                        <td> <?php echo $row->EDITION; ?> </td>
-                        <td> <?php echo $row->KEYWORD; ?> </td>
-                        <td> <?php echo $row->EXTENSION_NO; ?> </td>
-                        <td> <?php echo $row->PUBLISHER; ?> </td>
-                        <td> <?php echo $row->SUPPLIER; ?> </td>
-                        <td> Will be available from <?php echo $date;  ?></td>
-                        <td>Booked in advance</td>
+                                        <td> <?php echo $row->TITLE; ?> </td>
+                                        <td> <?php echo $row->AUTHOR; ?> </td>
+                                        <td> <?php echo $row->CATEGORY; ?> </td>
+                                        <td> <?php echo $row->EDITION; ?> </td>
+                                        <td> <?php echo $row->KEYWORD; ?> </td>
+                                        <td> <?php echo $row->EXTENSION_NO; ?> </td>
+                                        <td> <?php echo $row->PUBLISHER; ?> </td>
+                                        <td> <?php echo $row->SUPPLIER; ?> </td>
+                                        <td> Booked until <?php echo $date; ?></td>
+                                        <td>Booked</td>
 
 
-                    </tr>
+                                    </tr>
 
-                    <?php } else { ?>
+<?php } else { ?>
 
 
-                     <tr>
 
-                        <td> <?php echo $row->TITLE; ?> </td>
-                        <td> <?php echo $row->AUTHOR; ?> </td>
-                        <td> <?php echo $row->CATEGORY; ?> </td>
-                        <td> <?php echo $row->EDITION; ?> </td>
-                        <td> <?php echo $row->KEYWORD; ?> </td>
-                        <td> <?php echo $row->EXTENSION_NO; ?> </td>
-                        <td> <?php echo $row->PUBLISHER; ?> </td>
-                        <td> <?php echo $row->SUPPLIER; ?> </td>
-                        <td> Will be available from <?php echo $date;  ?></td>
-                        <td>   <a href="<?php echo base_url(); ?>index.php/book_list_member/advance_book/<?php echo $r->BOOKING_ID; ?>" class="btn btn-info">Advance</a></td>
+                                    <tr >
 
+                                        <td> <?php echo $row->TITLE; ?> </td>
+                                        <td> <?php echo $row->AUTHOR; ?> </td>
+                                        <td> <?php echo $row->CATEGORY; ?> </td>
+                                        <td> <?php echo $row->EDITION; ?> </td>
+                                        <td> <?php echo $row->KEYWORD; ?> </td>
+                                        <td> <?php echo $row->EXTENSION_NO; ?> </td>
+                                        <td> <?php echo $row->PUBLISHER; ?> </td>
+                                        <td> <?php echo $row->SUPPLIER; ?> </td>
+                                        <td> Will be available from <?php echo $date; ?></td>
+                                        <td>You have to pay fine</td>
 
-                    </tr>
 
-                    <?php } ?>
+                                    </tr>
 
-                    <?php } ?>
 
+<?php } ?>
 
-                    <?php } ?>
 
 
-<?php  if($a==0 && $fine>0) { ?>
 
 
 
 
 
-                     <tr >
 
-                        <td> <?php echo $row->TITLE; ?> </td>
-                        <td> <?php echo $row->AUTHOR; ?> </td>
-                        <td> <?php echo $row->CATEGORY; ?> </td>
-                        <td> <?php echo $row->EDITION; ?> </td>
-                        <td> <?php echo $row->KEYWORD; ?> </td>
-                        <td> <?php echo $row->EXTENSION_NO; ?> </td>
-                        <td> <?php echo $row->PUBLISHER; ?> </td>
-                        <td> <?php echo $row->SUPPLIER; ?> </td>
-                        <td>Available</td>
-                        <td>You have to pay fine</td>
 
 
-                    </tr>
 
-                    <?php } ?>
+<?php } ?>
 
 
 
 
-       <?php  if($a==2 && $fine>0) { ?>
 
 
-                          <?php $b=0; if(isset ($issued_books)) foreach($issued_books as $ro){
 
-                                    if($row->BOOK_ID == $ro->BOOK_ID){
+<?php } ?>
 
-                                        $b=2;
-                                        $date=$ro->FINISHING_DATE;
-                                        break;
-                                    }
-                                }
-                                ?>
+                        </table>
 
-                    <?php if($b==2) {?>
-                     <tr >
-
-                        <td> <?php echo $row->TITLE; ?> </td>
-                        <td> <?php echo $row->AUTHOR; ?> </td>
-                        <td> <?php echo $row->CATEGORY; ?> </td>
-                        <td> <?php echo $row->EDITION; ?> </td>
-                        <td> <?php echo $row->KEYWORD; ?> </td>
-                        <td> <?php echo $row->EXTENSION_NO; ?> </td>
-                        <td> <?php echo $row->PUBLISHER; ?> </td>
-                        <td> <?php echo $row->SUPPLIER; ?> </td>
-                        <td> Booked until <?php echo $date;  ?></td>
-                        <td>Booked</td>
-
-
-                    </tr>
-
-                    <?php } else { ?>
-
-
-
-                     <tr >
-
-                        <td> <?php echo $row->TITLE; ?> </td>
-                        <td> <?php echo $row->AUTHOR; ?> </td>
-                        <td> <?php echo $row->CATEGORY; ?> </td>
-                        <td> <?php echo $row->EDITION; ?> </td>
-                        <td> <?php echo $row->KEYWORD; ?> </td>
-                        <td> <?php echo $row->EXTENSION_NO; ?> </td>
-                        <td> <?php echo $row->PUBLISHER; ?> </td>
-                        <td> <?php echo $row->SUPPLIER; ?> </td>
-                        <td> Will be available from <?php echo $date;  ?></td>
-                        <td>You have to pay fine</td>
-
-
-                    </tr>
-
-
-                    <?php } ?>
-
-
-
-
-
-
-
-
-                   
-
-
-
-                    <?php } ?>
-
-
-
-
-
-
-
-                            <?php }  ?>
-
-                       </table>
-
-        <?php } else { ?>
-                <br/>  <br/>
-                    <div class="alert alert-error">
+<?php } else { ?>
+                        <br/>  <br/>
+                        <div class="alert alert-error">
                             <p>No Book found</p>
-                                </div>
-                    <?php  } ?>
-
-                 
-
-                
-
-    <?php echo $this->pagination->create_links();  ?>
-                    
-            
-
- </div>
-          </div>
+                        </div>
+<?php } ?>
 
 
-      </div>
-     </div>
 
 
-<script type="text/javascript" charset="utf-8">
-	$('tr:odd').css('background', '#dff0d8');
-</script>
+
+<?php echo $this->pagination->create_links(); ?>
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <script type="text/javascript" charset="utf-8">
+        $('tr:odd').css('background', '#dff0d8');
+    </script>
 
 
 <?php $this->load->view('includes/footer') ?>
