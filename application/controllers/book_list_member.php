@@ -33,7 +33,7 @@ class Book_list_member extends CI_Controller {
         $this->db->order_by('CATEGORY');
 
         $config['total_rows'] = $this->db->get('BOOK')->num_rows();
-        $config['per_page'] = 6;
+        $config['per_page'] = 8;
         $config['num_links'] = 20;
         $config['full_tag_open'] = '<div id="pagination">';
         $config['full_tag_close'] = '</div>';

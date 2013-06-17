@@ -1,6 +1,3 @@
-member approve trigger on status
-
-member highest koita boi book korte parbe???
 
 
 
@@ -8,4 +5,4 @@ db debug ta false kore dite hobe
 
 
 
-http://ebook.com/
+book cover image

@@ -18,7 +18,13 @@ class Book_model extends CI_Model {
             }
 
 
-
+            $file_name = basename($_FILES['file_upload']['name']);
+            if($file_name=="")
+            {
+                $file_name="n.jpg";
+            }
+            $upload_dir = "img";
+            $directory=$upload_dir."/".$file_name;
 
             $TITLE=$this->input->post('title',true);
            $AUTHOR=$this->input->post('author',true);
@@ -29,8 +35,8 @@ class Book_model extends CI_Model {
             $PUBLISHER=$this->input->post('publisher',true);
             $SUPPLIER = $this->input->post('supplier',true);
 
-       $query="INSERT INTO BOOK (BOOK_ID,TITLE,EDITION,AUTHOR,CATEGORY,EXTENSION_NO,KEYWORD,PUBLISHER,SUPPLIER)
-               VALUES (SEQ_USER.nextval,'$TITLE','$EDITION','$AUTHOR','$CATEGORY','$EXTENSION_NO','$KEYWORD','$PUBLISHER','$SUPPLIER')";
+       $query="INSERT INTO BOOK (BOOK_ID,TITLE,EDITION,AUTHOR,CATEGORY,EXTENSION_NO,KEYWORD,PUBLISHER,SUPPLIER,IMAGE_PATH)
+               VALUES (SEQ_USER.nextval,'$TITLE','$EDITION','$AUTHOR','$CATEGORY','$EXTENSION_NO','$KEYWORD','$PUBLISHER','$SUPPLIER','$directory')";
 
         $insert=$this->db->query($query);
 

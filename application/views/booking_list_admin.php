@@ -139,9 +139,12 @@ $this->load->view('includes/nav_helper', $data) ?>
                 <h3>Book details</h3>
                 </div>
                 <div id="pop-up-modal" class="modal-body">
-                    <h2><?php echo $row->TITLE; ?></h2><br/>
-                    written by:<?php echo $row->AUTHOR; ?><br/>
+                    <h2><?php echo $row->TITLE; ?></h2>
+                   <img src="<?php echo base_url(); ?><?php echo urldecode($row->IMAGE_PATH); ?>">
+                       <br/>
+                    Author:<?php echo $row->AUTHOR; ?><br/>
                     Category:<?php echo $row->CATEGORY; ?><br/>
+                    Edition:<?php echo $row->EDITION; ?><br/>
                     Publisher:<?php echo $row->PUBLISHER; ?><br/>
                 </div>
                 <div class="modal-footer">

@@ -41,12 +41,12 @@ class Book_list_admin extends CI_Controller {
 
                               if ($this->book_model->create_book())
                                 {
-                                    redirect('book_list_admin/show_books');
+                                   $this->load->view('add_book_view');
                                     
                                 }
                             else {
-                                    $data['msg'] = "username already exists try another username";
-                                    $this->load->view('registration_view',$data);
+                                    $data['msg'] = "book extension already exists";
+                                    $this->load->view('validation_error_view',$data);
 
                             }
 
@@ -109,7 +109,7 @@ class Book_list_admin extends CI_Controller {
             $this->db->order_by('CATEGORY');
 
             $config['total_rows']=  $this->db->get('BOOK')->num_rows();
-            $config['per_page']=6;
+            $config['per_page']=8;
             $config['num_links']=20;
             $config['full_tag_open']='<div id="pagination">';
             $config['full_tag_close']='</div>';

@@ -146,10 +146,8 @@ class Get_books extends CI_Controller {
         $data = array();
 
 
-        $config['base_url'] = '' . base_url() . 'index.php/get_books/show_books_by_id';
 
-
-        $this->db->where('BOOK_ID', $id);
+        $this->db->where('BOOK_ID',$id);
         $config['total_rows'] = $this->db->get('BOOK')->num_rows();
         $config['per_page'] = 6;
         $config['num_links'] = 20;
@@ -161,8 +159,8 @@ class Get_books extends CI_Controller {
 
 
 
-        $this->db->where('BOOK_ID', $id);
-        $query = $this->db->get('BOOK', $config['per_page'], $this->uri->segment(3));
+        $this->db->where('BOOK_ID',$id);
+        $query = $this->db->get('BOOK');
         $data['book_list'] = $query->result();
         $data['num'] = $config['total_rows'];
 

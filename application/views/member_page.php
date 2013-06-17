@@ -24,13 +24,31 @@
         <link href="<?php echo base_url() . 'assets' ?>/css/datepicker.css" rel="stylesheet" media="screen">
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap-datepicker.js"></script>
 
+	<style type="text/css" media="screen">
+
+	#pagination a, #pagination strong {
+	 background: #e3e3e3;
+	 padding: 4px 7px;
+	 text-decoration: none;
+	border: 1px solid #cac9c9;
+	color: #292929;
+	font-size: 13px;
+	}
+
+	#pagination strong, #pagination a:hover {
+	 font-weight: normal;
+	 background: #cac9c9;
+	}
+	</style>
+
+
 
     </head>
     <body>
 
         <?php $this->load->view('includes/navigation') ?>
 
-        <div class="content">
+        <div class="content" style="min-height: 450px">
             <!-- Start: SERVICE LIST -->
             <div class="container">
                 <div class="page-header">
@@ -59,269 +77,60 @@
 
                     </div>
                 </div>
-                <div class="row-fluid">
-                    <ul class="thumbnails">
+                
+                    
+                    <?php $count=1;  if (isset($books)) {?>
+
+<?php foreach ($books as $row) { ?>
+
+                 <?php   if($count==1) { ?>
+
+                                    <div class="row-fluid">
+                                        <ul class="thumbnails">
+
+                                        <?php } ?>
 
 
-
-                        <li class="span2">
-                            <div class="thumbnail" >
-                                <img src="img/1.jpg">
-
-
-                                <div class="caption">
-                                    <p class="center-align">
-                                        <a href="<?php echo site_url('book_list_member/show_books'); ?>" class="btn btn-success">Book now</a>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span2">
-                            <div class="thumbnail" >
-                                <img src="img/2.jpg">
-                  <!--                  <img  src="img/Asshadimbo-by-Anisul-Haque2.png" alt="product name">-->
-
-                                <div class="caption">
-                                    <p class="center-align">
-                                        <a href="<?php echo site_url('book_list_member/show_books'); ?>" class="btn btn-success">Book now</a>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span2">
-                            <div class="thumbnail" >
-                                <img src="img/3.jpg">
-                  <!--                  <img  src="img/Asshadimbo-by-Anisul-Haque2.png" alt="product name">-->
-
-                                <div class="caption">
-                                    <p class="center-align">
-                                        <a href="<?php echo site_url('book_list_member/show_books'); ?>" class="btn btn-success">Book now</a>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span2">
-                            <div class="thumbnail" >
-                                <img src="img/4.jpg">
-
-                                <div class="caption">
-                                    <p class="center-align">
-                                        <a href="<?php echo site_url('book_list_member/show_books'); ?>" class="btn btn-success">Book now</a>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span2">
-                            <div class="thumbnail" >
-                                <img src="img/5.jpg">
-                  <!--                  <img  src="img/Asshadimbo-by-Anisul-Haque2.png" alt="product name">-->
-
-                                <div class="caption">
-                                    <p class="center-align">
-                                        <a href="<?php echo site_url('book_list_member/show_books'); ?>" class="btn btn-success">Book now</a>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span2">
-                            <div class="thumbnail" >
-                                <img src="img/6.jpg">
-                  <!--                  <img  src="img/Asshadimbo-by-Anisul-Haque2.png" alt="product name">-->
-
-                                <div class="caption">
-                                    <p class="center-align">
-                                        <a href="<?php echo site_url('book_list_member/show_books'); ?>" class="btn btn-success">Book now</a>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                                <li class="span2">
+                                    <div class="thumbnail" >
+                                        <img src="<?php echo base_url(); ?><?php echo urldecode($row->IMAGE_PATH); ?>">
 
 
-                </div>
+                                        
+                                            <div class="center-align" >
+                                            
+                                                <br/>
+                                                <a href="<?php echo site_url("get_books/show_books_by_id/$row->BOOK_ID"); ?>" class="btn btn-success">Book now</a>
 
-                <div class="row-fluid">
-                    <ul class="thumbnails">
+                                            </div>
+                                       
+                                    </div>
+                                </li>
 
+                            
 
+                                           <?php   if($count==6) { ?>
 
-                        <li class="span2">
-                            <div class="thumbnail" >
-                                <img src="img/7.jpg">
-                  <!--                  <img  src="img/Asshadimbo-by-Anisul-Haque2.png" alt="product name">-->
+                                        </ul>
+                                    </div>
 
-                                <div class="caption">
-                                    <p class="center-align">
-                                        <a href="<?php echo site_url('book_list_member/show_books'); ?>" class="btn btn-success">Book now</a>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span2">
-                            <div class="thumbnail" >
-                                <img src="img/8.jpg">
-                  <!--                  <img  src="img/Asshadimbo-by-Anisul-Haque2.png" alt="product name">-->
-
-                                <div class="caption">
-                                    <p class="center-align">
-                                        <a href="<?php echo site_url('book_list_member/show_books'); ?>" class="btn btn-success">Book now</a>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span2">
-                            <div class="thumbnail" >
-                                <img src="img/9.jpg">
-                  <!--                  <img  src="img/Asshadimbo-by-Anisul-Haque2.png" alt="product name">-->
-
-                                <div class="caption">
-                                    <p class="center-align">
-                                        <a href="<?php echo site_url('book_list_member/show_books'); ?>" class="btn btn-success">Book now</a>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span2">
-                            <div class="thumbnail" >
-                                <img src="img/10.gif">
-
-                                <div class="caption">
-                                    <p class="center-align">
-                                        <a href="<?php echo site_url('book_list_member/show_books'); ?>" class="btn btn-success">Book now</a>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span2">
-                            <div class="thumbnail" >
-                                <img src="img/11.jpg">
-                  <!--                  <img  src="img/Asshadimbo-by-Anisul-Haque2.png" alt="product name">-->
-
-                                <div class="caption">
-                                    <p class="center-align">
-                                        <a href="<?php echo site_url('book_list_member/show_books'); ?>" class="btn btn-success">Book now</a>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span2">
-                            <div class="thumbnail" >
-                                <img src="img/12.jpg">
-                  <!--                  <img  src="img/Asshadimbo-by-Anisul-Haque2.png" alt="product name">-->
-
-                                <div class="caption">
-                                    <p class="center-align">
-                                        <a href="<?php echo site_url('book_list_member/show_books'); ?>" class="btn btn-success">Book now</a>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                                        <?php } ?>
 
 
-                </div>
+                    <?php  $count++;  if($count==7) { $count=1;}?>
 
-                <div class="row-fluid">
-                    <ul class="thumbnails">
+                    <?php } ?>
+                <?php } ?>
 
-
-
-                        <li class="span2">
-                            <div class="thumbnail" >
-                                <img src="img/13.jpg">
-                  <!--                  <img  src="img/Asshadimbo-by-Anisul-Haque2.png" alt="product name">-->
-
-                                <div class="caption">
-                                    <p class="center-align">
-                                        <a href="<?php echo site_url('book_list_member/show_books'); ?>" class="btn btn-success">Book now</a>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span2">
-                            <div class="thumbnail" >
-                                <img src="img/14.jpg">
-                  <!--                  <img  src="img/Asshadimbo-by-Anisul-Haque2.png" alt="product name">-->
-
-                                <div class="caption">
-                                    <p class="center-align">
-                                        <a href="<?php echo site_url('book_list_member/show_books'); ?>" class="btn btn-success">Book now</a>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span2">
-                            <div class="thumbnail" >
-                                <img src="img/15.jpg">
-                  <!--                  <img  src="img/Asshadimbo-by-Anisul-Haque2.png" alt="product name">-->
-
-                                <div class="caption">
-                                    <p class="center-align">
-                                        <a href="<?php echo site_url('book_list_member/show_books'); ?>" class="btn btn-success">Book now</a>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span2">
-                            <div class="thumbnail" >
-                                <img src="img/16.jpg">
-
-                                <div class="caption">
-                                    <p class="center-align">
-                                        <a href="<?php echo site_url('book_list_member/show_books'); ?>" class="btn btn-success">Book now</a>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span2">
-                            <div class="thumbnail" >
-                                <img src="img/17.jpg">
-                  <!--                  <img  src="img/Asshadimbo-by-Anisul-Haque2.png" alt="product name">-->
-
-                                <div class="caption">
-                                    <p class="center-align">
-                                        <a href="<?php echo site_url('book_list_member/show_books'); ?>" class="btn btn-success">Book now</a>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="span2">
-                            <div class="thumbnail" >
-                                <img src="img/18.jpg">
-                  <!--                  <img  src="img/Asshadimbo-by-Anisul-Haque2.png" alt="product name">-->
-
-                                <div class="caption">
-                                    <p class="center-align">
-                                        <a href="<?php echo site_url('book_list_member/show_books'); ?>" class="btn btn-success">Book now</a>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-
-
-                </div>
-
+                <?php echo $this->pagination->create_links();  ?>
+                
             </div>
         </div>
 
-        <?php $this->load->view('includes/footer') ?>
+
+
+
+
+</body>
+</head>
 

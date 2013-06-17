@@ -98,17 +98,13 @@ $this->load->view('includes/nav_helper', $data) ?>
                 <table class="table table-bordered">
 
                     <tr >
-                        <th colspan="10">All books list(Total <?php echo $num; ?> Books)</th>
+                        <th colspan="6">All books list(Total <?php echo $num; ?> Books)</th>
                     </tr>
 
                <tr >
                     <th>Title</th>
                      <th>Author</th>
-                     <th>Category</th>
-                     <th>Edition</th>
-                     <th>Keyword</th>
                      <th>Extension no</th>
-                     <th>Publisher</th>
                      <th>Supplier</th>
                      <th></th>
                      <th></th>
@@ -119,13 +115,9 @@ $this->load->view('includes/nav_helper', $data) ?>
 
                      <tr >
 
-                        <td> <?php echo $row->TITLE; ?> </td>
+                        <td ><a data-toggle="modal" href="#b-<?php echo $row->BOOK_ID; ?>"><?php echo $row->TITLE; ?> </a></td>
                         <td> <?php echo $row->AUTHOR; ?> </td>
-                        <td> <?php echo $row->CATEGORY; ?> </td>
-                        <td> <?php echo $row->EDITION; ?> </td>
-                        <td> <?php echo $row->KEYWORD; ?> </td>
                         <td> <?php echo $row->EXTENSION_NO; ?> </td>
-                        <td> <?php echo $row->PUBLISHER; ?> </td>
                         <td> <?php echo $row->SUPPLIER; ?> </td>
                         <td>        <a href="<?php echo base_url(); ?>index.php/book_list_admin/book_edit/<?php echo $row->BOOK_ID; ?>" class="btn btn-success">Edit</a>
  </td>
@@ -134,6 +126,30 @@ $this->load->view('includes/nav_helper', $data) ?>
 
 
                     </tr>
+
+
+                    
+                 <div id="b-<?php echo $row->BOOK_ID; ?>" class="modal hide fade in" style="display: none; ">
+                <div class="modal-header">
+                <a class="close" data-dismiss="modal" color="red" >Close</a>
+                <h3>Book details</h3>
+                </div>
+                <div id="pop-up-modal" class="modal-body">
+                    <h2><?php echo $row->TITLE; ?></h2>
+                   <img src="<?php echo base_url(); ?><?php echo urldecode($row->IMAGE_PATH); ?>">
+                       <br/>
+                    Author:<?php echo $row->AUTHOR; ?><br/>
+                    Category:<?php echo $row->CATEGORY; ?><br/>
+                    Edition:<?php echo $row->EDITION; ?><br/>
+                    Publisher:<?php echo $row->PUBLISHER; ?><br/>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+                </div>
+
+
+
 
 
 

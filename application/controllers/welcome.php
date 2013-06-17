@@ -32,7 +32,7 @@ class Welcome extends CI_Controller {
 
             $this->load->view('welcome_message');
         } else if (!isset($is_logged_in_admin) || $is_logged_in_admin != true) {
-            $this->load->view('member_page');
+           redirect('member_auth/member_page');
         } else {
             redirect('book_list_admin/show_books');
         }
