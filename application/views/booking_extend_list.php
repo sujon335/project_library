@@ -95,7 +95,7 @@ $this->load->view('includes/nav_helper', $data) ?>
 
 
                      <tr >
-                        <td> <?php echo $row->TITLE; ?> </td>
+                        <td ><a data-toggle="modal" href="#b-<?php echo $row->BOOK_ID; ?>"><?php echo $row->TITLE; ?> </a></td>
                         <td> Name:<?php echo $row->NAME; ?><br/>
                            Email:<?php echo $row->EMAIL; ?><br/>
                            Library card No:<?php echo $row->LIBRARY_CARD_NO; ?>
@@ -110,7 +110,27 @@ $this->load->view('includes/nav_helper', $data) ?>
  
 
                     </tr>
-                    
+
+
+                 <div id="b-<?php echo $row->BOOK_ID; ?>" class="modal hide fade in" style="display: none; ">
+                <div class="modal-header">
+                <a class="close" data-dismiss="modal" color="red" >Close</a>
+                <h3>Book details</h3>
+                </div>
+                <div id="pop-up-modal" class="modal-body">
+                    <h2><?php echo $row->TITLE; ?></h2><br/>
+                    written by:<?php echo $row->AUTHOR; ?><br/>
+                    Category:<?php echo $row->CATEGORY; ?><br/>
+                    Publisher:<?php echo $row->PUBLISHER; ?><br/>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+                </div>
+
+
+
+
                  
 
                             <?php }  ?>

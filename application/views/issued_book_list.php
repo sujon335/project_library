@@ -61,7 +61,7 @@ $this->load->view('includes/nav_helper', $data) ?>
 
 
       <div class="row-fluid">
-        <div class="span2">
+        <div class="span3">
 
         <?php $this-> load->view('includes/side_bar')?>
         </div>
@@ -100,7 +100,7 @@ $this->load->view('includes/nav_helper', $data) ?>
 
                      <tr>
 
-                        <td> <a href='#' id='opener' name='".$row->BOOK_ID."'><?php echo $row->TITLE; ?> </a></td>
+                         <td ><a data-toggle="modal" href="#b-<?php echo $row->BOOK_ID; ?>"><?php echo $row->TITLE; ?> </a></td>
                         <td> <?php echo $row->BOOKING_DATE; ?> </td>
                         <td> <?php echo $row->FINISHING_DATE; ?> </td>
 
@@ -112,6 +112,23 @@ $this->load->view('includes/nav_helper', $data) ?>
                               </form>
                         </td>
                     </tr>
+
+                 <div id="b-<?php echo $row->BOOK_ID; ?>" class="modal hide fade in" style="display: none; ">
+                <div class="modal-header">
+                <a class="close" data-dismiss="modal" color="red" >Close</a>
+                <h3>Book details</h3>
+                </div>
+                <div id="pop-up-modal" class="modal-body">
+                    <h2><?php echo $row->TITLE; ?></h2><br/>
+                    written by:<?php echo $row->AUTHOR; ?><br/>
+                    Category:<?php echo $row->CATEGORY; ?><br/>
+                    Publisher:<?php echo $row->PUBLISHER; ?><br/>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+                </div>
+
 
 
 

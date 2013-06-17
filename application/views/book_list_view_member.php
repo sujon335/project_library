@@ -58,12 +58,12 @@ $this->load->view('includes/nav_helper', $data) ?>
 
 
             <div class="row-fluid">
-                <div class="span2">
+                <div class="span3">
 
                     <?php $this->load->view('includes/side_bar') ?>
                 </div>
 
-                <div class="span10">
+                <div class="span9">
 
 
 
@@ -97,7 +97,7 @@ $this->load->view('includes/nav_helper', $data) ?>
                         <table class="table table-bordered">
 
                             <tr >
-                                <th colspan="10">All books list(Total <?php echo $num; ?> Books)</th>
+                                <th colspan="8">All books list(Total <?php echo $num; ?> Books)</th>
                             </tr>
 
                             <tr >
@@ -105,10 +105,8 @@ $this->load->view('includes/nav_helper', $data) ?>
                                 <th>Author</th>
                                 <th>Category</th>
                                 <th>Edition</th>
-                                <th>Keyword</th>
                                 <th>Extension no</th>
                                 <th>Publisher</th>
-                                <th>Supplier</th>
                                 <th>Availability</th>
                                 <th>booking</th>
                             </tr>
@@ -145,10 +143,8 @@ $this->load->view('includes/nav_helper', $data) ?>
                                     <td> <?php echo $row->AUTHOR; ?> </td>
                                     <td> <?php echo $row->CATEGORY; ?> </td>
                                     <td> <?php echo $row->EDITION; ?> </td>
-                                    <td> <?php echo $row->KEYWORD; ?> </td>
                                     <td> <?php echo $row->EXTENSION_NO; ?> </td>
                                     <td> <?php echo $row->PUBLISHER; ?> </td>
-                                    <td> <?php echo $row->SUPPLIER; ?> </td>
                                     <td>Available</td>
                                     <td>        <a href="<?php echo base_url(); ?>index.php/book_list_member/issue_book/<?php echo $row->BOOK_ID; ?>" class="btn btn-success">Issue</a></td>
 
@@ -185,10 +181,8 @@ $this->load->view('includes/nav_helper', $data) ?>
                                         <td> <?php echo $row->AUTHOR; ?> </td>
                                         <td> <?php echo $row->CATEGORY; ?> </td>
                                         <td> <?php echo $row->EDITION; ?> </td>
-                                        <td> <?php echo $row->KEYWORD; ?> </td>
                                         <td> <?php echo $row->EXTENSION_NO; ?> </td>
                                         <td> <?php echo $row->PUBLISHER; ?> </td>
-                                        <td> <?php echo $row->SUPPLIER; ?> </td>
                                         <td> Booked until <?php echo $date; ?></td>
                                         <td>Booked</td>
 
@@ -221,10 +215,8 @@ $this->load->view('includes/nav_helper', $data) ?>
                                             <td> <?php echo $row->AUTHOR; ?> </td>
                                             <td> <?php echo $row->CATEGORY; ?> </td>
                                             <td> <?php echo $row->EDITION; ?> </td>
-                                            <td> <?php echo $row->KEYWORD; ?> </td>
                                             <td> <?php echo $row->EXTENSION_NO; ?> </td>
                                             <td> <?php echo $row->PUBLISHER; ?> </td>
-                                            <td> <?php echo $row->SUPPLIER; ?> </td>
                                             <td> Will be available from <?php echo $date; ?></td>
                                             <td>Booked in advance</td>
 
@@ -240,10 +232,8 @@ $this->load->view('includes/nav_helper', $data) ?>
                                             <td> <?php echo $row->AUTHOR; ?> </td>
                                             <td> <?php echo $row->CATEGORY; ?> </td>
                                             <td> <?php echo $row->EDITION; ?> </td>
-                                            <td> <?php echo $row->KEYWORD; ?> </td>
                                             <td> <?php echo $row->EXTENSION_NO; ?> </td>
                                             <td> <?php echo $row->PUBLISHER; ?> </td>
-                                            <td> <?php echo $row->SUPPLIER; ?> </td>
                                             <td> Will be available from <?php echo $date; ?></td>
                                             <td>   <a href="<?php echo base_url(); ?>index.php/book_list_member/advance_book/<?php echo $r->BOOKING_ID; ?>" class="btn btn-info">Advance</a></td>
 
@@ -270,10 +260,8 @@ $this->load->view('includes/nav_helper', $data) ?>
                                     <td> <?php echo $row->AUTHOR; ?> </td>
                                     <td> <?php echo $row->CATEGORY; ?> </td>
                                     <td> <?php echo $row->EDITION; ?> </td>
-                                    <td> <?php echo $row->KEYWORD; ?> </td>
                                     <td> <?php echo $row->EXTENSION_NO; ?> </td>
                                     <td> <?php echo $row->PUBLISHER; ?> </td>
-                                    <td> <?php echo $row->SUPPLIER; ?> </td>
                                     <td>Available</td>
                                     <td>You have to pay fine</td>
 
@@ -310,10 +298,8 @@ $this->load->view('includes/nav_helper', $data) ?>
                                         <td> <?php echo $row->AUTHOR; ?> </td>
                                         <td> <?php echo $row->CATEGORY; ?> </td>
                                         <td> <?php echo $row->EDITION; ?> </td>
-                                        <td> <?php echo $row->KEYWORD; ?> </td>
                                         <td> <?php echo $row->EXTENSION_NO; ?> </td>
                                         <td> <?php echo $row->PUBLISHER; ?> </td>
-                                        <td> <?php echo $row->SUPPLIER; ?> </td>
                                         <td> Booked until <?php echo $date; ?></td>
                                         <td>Booked</td>
 
@@ -330,10 +316,8 @@ $this->load->view('includes/nav_helper', $data) ?>
                                         <td> <?php echo $row->AUTHOR; ?> </td>
                                         <td> <?php echo $row->CATEGORY; ?> </td>
                                         <td> <?php echo $row->EDITION; ?> </td>
-                                        <td> <?php echo $row->KEYWORD; ?> </td>
                                         <td> <?php echo $row->EXTENSION_NO; ?> </td>
                                         <td> <?php echo $row->PUBLISHER; ?> </td>
-                                        <td> <?php echo $row->SUPPLIER; ?> </td>
                                         <td> Will be available from <?php echo $date; ?></td>
                                         <td>You have to pay fine</td>
 

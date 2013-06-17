@@ -21,7 +21,7 @@ $this->load->view('includes/nav_helper', $data) ?>
       <div class="container">
 
       <div class="row-fluid">
-        <div class="span2">
+        <div class="span3">
 
         <?php $this-> load->view('includes/side_bar')?>
         </div>

@@ -68,10 +68,12 @@ class Book_list_member extends CI_Controller {
         $data['adv_book'] = $que->result();
 
 
-        $this->db->distinct('AUTHOR');
-        $s = $this->db->get('BOOK');
-        $data['books'] = $s->result();
 
+
+        $s = $this->db->query('SELECT DISTINCT CATEGORY FROM BOOK');
+        $data['cats'] = $s->result();
+        $t = $this->db->query('SELECT DISTINCT AUTHOR FROM BOOK');
+        $data['author'] = $t->result();
         $this->load->view('book_list_view_member', $data);
     }
 
@@ -131,8 +133,10 @@ class Book_list_member extends CI_Controller {
 
 
 
-            $s = $this->db->get('BOOK');
-            $data['books'] = $s->result();
+            $s = $this->db->query('SELECT DISTINCT CATEGORY FROM BOOK');
+            $data['cats'] = $s->result();
+            $t = $this->db->query('SELECT DISTINCT AUTHOR FROM BOOK');
+            $data['author'] = $t->result();
             $this->load->view('book_list_view_member', $data);
         } else {
 
@@ -162,9 +166,10 @@ class Book_list_member extends CI_Controller {
 
 
 
-
-            $s = $this->db->get('BOOK');
-            $data['books'] = $s->result();
+            $s = $this->db->query('SELECT DISTINCT CATEGORY FROM BOOK');
+            $data['cats'] = $s->result();
+            $t = $this->db->query('SELECT DISTINCT AUTHOR FROM BOOK');
+            $data['author'] = $t->result();
             $this->load->view('book_list_view_member', $data);
         }
     }
@@ -181,16 +186,18 @@ class Book_list_member extends CI_Controller {
         if (!$insert) {
             $data['msg'] = "Booking failed!!!Yoy have already booked 4 books";
 
-
-            $s = $this->db->get('BOOK');
-            $data['books'] = $s->result();
+            $s = $this->db->query('SELECT DISTINCT CATEGORY FROM BOOK');
+            $data['cats'] = $s->result();
+            $t = $this->db->query('SELECT DISTINCT AUTHOR FROM BOOK');
+            $data['author'] = $t->result();
             $this->load->view('validation_error_view', $data);
         } else {
             $data['msg'] = "Successfully booked";
 
-
-            $s = $this->db->get('BOOK');
-            $data['books'] = $s->result();
+            $s = $this->db->query('SELECT DISTINCT CATEGORY FROM BOOK');
+            $data['cats'] = $s->result();
+            $t = $this->db->query('SELECT DISTINCT AUTHOR FROM BOOK');
+            $data['author'] = $t->result();
             $this->load->view('validation_error_view', $data);
         }
     }
@@ -204,9 +211,10 @@ class Book_list_member extends CI_Controller {
 
         $insert = $this->db->query($query);
 
-
-        $s = $this->db->get('BOOK');
-        $data['books'] = $s->result();
+        $s = $this->db->query('SELECT DISTINCT CATEGORY FROM BOOK');
+        $data['cats'] = $s->result();
+        $t = $this->db->query('SELECT DISTINCT AUTHOR FROM BOOK');
+        $data['author'] = $t->result();
         $data['msg'] = "Successfully advance booked";
         $this->load->view('validation_error_view', $data);
     }

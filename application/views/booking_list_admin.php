@@ -109,11 +109,15 @@ $this->load->view('includes/nav_helper', $data) ?>
 
                      <tr >
 
-                        <td id="opener-<?php echo $row->BOOK_ID; ?>"> <a href='#'><?php echo $row->TITLE; ?> </a></td>
+                        <td ><a data-toggle="modal" href="#b-<?php echo $row->BOOK_ID; ?>"><?php echo $row->TITLE; ?> </a></td>
                         <td> <?php echo $row->EXTENSION_NO; ?> </td>
                         <td> <?php echo $row->NAME; ?> </td>
                         <td> <?php echo $row->LIBRARY_CARD_NO; ?> </td>
                         <td> <?php echo $row->FINISHING_DATE; ?> </td>
+
+
+
+
 
 
 
@@ -127,8 +131,28 @@ $this->load->view('includes/nav_helper', $data) ?>
                         <?php  }?>
 
                     </tr>
-                    
+
+
+                  <div id="b-<?php echo $row->BOOK_ID; ?>" class="modal hide fade in" style="display: none; ">
+                <div class="modal-header">
+                <a class="close" data-dismiss="modal" color="red" >Close</a>
+                <h3>Book details</h3>
+                </div>
+                <div id="pop-up-modal" class="modal-body">
+                    <h2><?php echo $row->TITLE; ?></h2><br/>
+                    written by:<?php echo $row->AUTHOR; ?><br/>
+                    Category:<?php echo $row->CATEGORY; ?><br/>
+                    Publisher:<?php echo $row->PUBLISHER; ?><br/>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+                </div>
+
+
+
                  
+
 
                             <?php }  ?>
 
@@ -159,26 +183,12 @@ $this->load->view('includes/nav_helper', $data) ?>
 
 
     
-<div id="create_lib" class="modal hide fade in" style="display: none; ">
-<div class="modal-header">
-<a class="close" data-dismiss="modal" color="red" >Close</a>
-<h3>Book details</h3>
-</div>
-<div id="pop-up-modal" class="modal-body">
-
-
-
-</div>
-<div class="modal-footer">
-
-</div>
-</div>
 
 
 
 
 
-<script type="text/javascript">
+<!--<script type="text/javascript">
     $(function(){
 
         $("#opener-<?php echo $row->BOOK_ID; ?>").click(function(){
@@ -189,7 +199,7 @@ $this->load->view('includes/nav_helper', $data) ?>
             });
         });
     });
-</script>
+</script>-->
 
     
 

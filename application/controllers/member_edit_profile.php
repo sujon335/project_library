@@ -36,13 +36,18 @@ class Member_edit_profile extends CI_Controller {
         $this->form_validation->set_rules('username', '', 'required');
         if ($this->form_validation->run() == FALSE) {
 
-            $s = $this->db->get('BOOK');
-            $data['books'] = $s->result();
+            $s = $this->db->query('SELECT DISTINCT CATEGORY FROM BOOK');
+            $data['cats'] = $s->result();
+            $t = $this->db->query('SELECT DISTINCT AUTHOR FROM BOOK');
+            $data['author'] = $t->result();
             $this->load->view('edit_profile_view', $data);
         } else {
             if ($qu = $this->settings_model->update_member_info($member_id)) {
-                $s = $this->db->get('BOOK');
-                $data['books'] = $s->result();
+
+                $s = $this->db->query('SELECT DISTINCT CATEGORY FROM BOOK');
+                $data['cats'] = $s->result();
+                $t = $this->db->query('SELECT DISTINCT AUTHOR FROM BOOK');
+                $data['author'] = $t->result();
                 $data['msg'] = "Succesfully updated";
                 $this->load->view('validation_error_view', $data);
             }
@@ -59,8 +64,10 @@ class Member_edit_profile extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
 
-            $s = $this->db->get('BOOK');
-            $data['books'] = $s->result();
+            $s = $this->db->query('SELECT DISTINCT CATEGORY FROM BOOK');
+            $data['cats'] = $s->result();
+            $t = $this->db->query('SELECT DISTINCT AUTHOR FROM BOOK');
+            $data['author'] = $t->result();
             $this->load->view('validation_error_view');
         } else {
 
@@ -77,16 +84,20 @@ class Member_edit_profile extends CI_Controller {
 
                 if ($q = $this->settings_model->change_password_member($member_id)) {
                     $data['msg'] = "password has been successfully changed";
-                    $s = $this->db->get('BOOK');
-                    $data['books'] = $s->result();
+                    $s = $this->db->query('SELECT DISTINCT CATEGORY FROM BOOK');
+                    $data['cats'] = $s->result();
+                    $t = $this->db->query('SELECT DISTINCT AUTHOR FROM BOOK');
+                    $data['author'] = $t->result();
                     $this->load->view('validation_error_view', $data);
                 } else {
                     echo "error";
                 }
             } else {
                 $data['msg'] = "current password didn't match";
-                $s = $this->db->get('BOOK');
-                $data['books'] = $s->result();
+                $s = $this->db->query('SELECT DISTINCT CATEGORY FROM BOOK');
+                $data['cats'] = $s->result();
+                $t = $this->db->query('SELECT DISTINCT AUTHOR FROM BOOK');
+                $data['author'] = $t->result();
                 $this->load->view('validation_error_view', $data);
             }
         }

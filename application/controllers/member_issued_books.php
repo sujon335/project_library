@@ -31,8 +31,10 @@ class Member_issued_books extends CI_Controller {
         }
 
         $data['num'] = $fine;
-        $s = $this->db->get('BOOK');
-        $data['books'] = $s->result();
+        $s = $this->db->query('SELECT DISTINCT CATEGORY FROM BOOK');
+        $data['cats'] = $s->result();
+        $t = $this->db->query('SELECT DISTINCT AUTHOR FROM BOOK');
+        $data['author'] = $t->result();
         $this->load->view('fine_of_member', $data);
     }
 
@@ -65,8 +67,10 @@ class Member_issued_books extends CI_Controller {
         $data['n'] = $query->num_rows;
 
 
-        $s = $this->db->get('BOOK');
-        $data['books'] = $s->result();
+        $s = $this->db->query('SELECT DISTINCT CATEGORY FROM BOOK');
+        $data['cats'] = $s->result();
+        $t = $this->db->query('SELECT DISTINCT AUTHOR FROM BOOK');
+        $data['author'] = $t->result();
         $this->load->view('issued_book_list', $data);
     }
 
@@ -96,8 +100,10 @@ class Member_issued_books extends CI_Controller {
         }
 
         $data['msg'] = "Extend booking request send";
-        $s = $this->db->get('BOOK');
-        $data['books'] = $s->result();
+        $s = $this->db->query('SELECT DISTINCT CATEGORY FROM BOOK');
+        $data['cats'] = $s->result();
+        $t = $this->db->query('SELECT DISTINCT AUTHOR FROM BOOK');
+        $data['author'] = $t->result();
         $this->load->view('validation_error_view', $data);
     }
 

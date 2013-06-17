@@ -34,14 +34,14 @@ if ((!isset($is_logged_in_admin) || $is_logged_in_admin != true) && (!isset($is_
                 <li><a href="#" data-target="#demo">Categories</a>
                     <ul id="demo" class="collapse" style="height: 0px;">
 
-                        <?php if (isset($books)){
-                            foreach ($books as $row){
+                        <?php if (isset($cats)){
+                            foreach ($cats as $row){
 
                             ?>
 
 
 
-                        <li><a href="#"><?php echo $row->CATEGORY; ?></a></li>
+                        <li><a href="<?php echo site_url("get_books/show_books_by_category/".urldecode($row->CATEGORY)); ?>"><?php echo $row->CATEGORY; ?></a></li>
 
                      <?php  }}?>
                     </ul>
@@ -49,13 +49,13 @@ if ((!isset($is_logged_in_admin) || $is_logged_in_admin != true) && (!isset($is_
                 <li><a href="#" data-target="#demo2">Authors</a></li>
                 <ul id="demo2" class="collapse" style="height: 0px;">
 
-                        <?php if (isset($books)){
-                            foreach ($books as $row){
+                        <?php if (isset($author)){
+                            foreach ($author as $row){
 
                             ?>
 
 
-                        <li><a href="#"><?php echo $row->AUTHOR; ?></a></li>
+                    <li><a href="<?php echo site_url("get_books/show_books_by_author/".urldecode($row->AUTHOR )); ?>"><?php echo $row->AUTHOR; ?></a></li>
 
                         <?php } }?>
 
