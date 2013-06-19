@@ -130,6 +130,18 @@
 
 
 
+ <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-ui.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>js/boot-business.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>js/twitter-bootstrap-hover-dropdown.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>js/twitter-bootstrap-hover-dropdown.min.js"></script>
+
+
+
+
+
+
 
 </body>
 </head>

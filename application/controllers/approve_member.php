@@ -40,14 +40,14 @@ class Approve_member extends CI_Controller {
         $update=$this->db->query($query);
 
 //
-//            $this->db->where('MEMBER_ID',$member_id);
-//            $q=$this->db->get('MEMBER');
-//            foreach($q->result() as $row)
-//            {
-//                $email=$row->EMAIL;
-//            }
-//
-//        $this->approval_mail($email);
+            $this->db->where('MEMBER_ID',$member_id);
+            $q=$this->db->get('MEMBER');
+            foreach($q->result() as $row)
+            {
+                $email=$row->EMAIL;
+            }
+
+        $a=$this->approval_mail($email);
 
         redirect('approve_member/disapproved_members');
         
@@ -135,17 +135,17 @@ class Approve_member extends CI_Controller {
                     $this->email->set_newline("\r\n");
 
                     $this->email->from($sender_mail,$sender_name);
-                    $this->email->to($this->input->post('email'));
+                    $this->email->to($email);
                     $this->email->subject($subject);
                     $this->email->message($message);
 
                     if($this->email->send())
                     {
-                        redirect('approve_member/disapproved_members');
+                        return true;
                     }
                     else
                     {
-                        show_error($this->email->print_debugger());
+                       return false;
                     }
 
 
